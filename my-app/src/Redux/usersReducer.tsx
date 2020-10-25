@@ -1,10 +1,12 @@
 import {UserElType, UserPageType} from "./store"
 
 
-let initialState: UserPageType = {
-    items: [
+let initialState = {
+    items: [],
+    pageSize: 5,
+    totalUsersCount: 21,
+    currentPage: 2,
 
-    ]
 }
 
 
@@ -40,7 +42,13 @@ export const usersReducer = (state: UserPageType = initialState, action: Dispatc
                 })
             }
         case "SET_USERS":
-            debugger
+
+            return {
+                ...state,
+                items: [...state.items,...action.items]
+            }
+        case "SET_USERS":
+
             return {
                 ...state,
                 items: [...state.items,...action.items]

@@ -25,6 +25,8 @@ export type UserElType= {
     photos: { small: null| undefined, large: null| undefined}
     status: null
     followed: boolean
+
+
 }
 
 export type DialogsPageType = {
@@ -41,6 +43,9 @@ export type ProfilePageType = {
 
 export type UserPageType = {
     items: UserElType[]
+    pageSize?: number
+    totalUsersCount?: number
+    currentPage?: number
 }
 
 export type StateType = {

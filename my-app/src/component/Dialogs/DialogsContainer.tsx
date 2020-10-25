@@ -7,7 +7,7 @@ import {store} from "../../Redux/reduxStore";
 
 
 function mapStateProps(state: StateType) {
-debugger
+
     return{
         messagesData: state.dialogPage.messagesData,
         dialogsData: state.dialogPage.dialogsData,

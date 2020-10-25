@@ -21,11 +21,15 @@ function App() {
                 <Header/>
                 <Navbar/>
                 <div className="app-wrapper-content">
+
                     <Route path='/Profile'
                            render={() => <Profile/>}/>
 
                     <Route path='/Dialogs'
                            render={() => <DialogsContainer/>}/>
+
+                    <Route path='/Users'
+                           render={() => <UsersContainer />}/>
 
                     <Route path='/News'
                            render={() => <News/>}/>
@@ -35,8 +39,7 @@ function App() {
 
                     <Route path='/Settings'
                            render={() => <Settings/>}/>
-                    <Route path='/Users'
-                           render={() => <UsersContainer/>}/>
+
                 </div>
             </div>
         </BrowserRouter>

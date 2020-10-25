@@ -15,7 +15,7 @@ type DialogsPageTypeProps = {
 
 
 export function Dialogs(props: DialogsPageTypeProps) {
-    debugger
+
     let dialogsElement = props.dialogsData.map(d => <DialogName dialogsId={d.dialogsId} name={d.name}/>)
     let messagesElement = props.messagesData.map(m => <DialogsMessage messageId={m.messageId}
                                                                       message={m.message}/>)

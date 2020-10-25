@@ -10,6 +10,7 @@ export function Navbar() {
     <nav className={classes.nav}>
         <div><NavLink activeClassName={classes["activeHover"]} className={classes.activeClick} to={"/Profile"}>Profile</NavLink></div>
         <div><NavLink activeClassName={classes.activeHover} className={classes.activeClick} to={"/Dialogs"}>Dialogs</NavLink></div>
+        <div><NavLink activeClassName={classes.activeHover} className={classes.activeClick} to={"/Users"}>Users</NavLink></div>
         <div><NavLink activeClassName={classes.activeHover} className={classes.activeClick} to={"/News"}>News</NavLink></div>
         <div><NavLink activeClassName={classes.activeHover} className={classes.activeClick} to={"/Music"}>Music</NavLink></div>
         <div><NavLink activeClassName={classes.activeHover} className={classes.activeClick} to={"/Settings"}>Settings</NavLink></div>

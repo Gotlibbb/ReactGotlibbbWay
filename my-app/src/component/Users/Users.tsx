@@ -13,13 +13,13 @@ type UsersPropsType = {
 export function Users(props: UsersPropsType) {
 
     if (props.usersPage.length === 0) {
-        debugger;
+
 
         axios.get<UserPageType>("https://social-network.samuraijs.com/api/1.0/users").then(res => {
 
 
             props.setUsers(res.data.items)
-            debugger
+
         });
 
 
@@ -35,7 +35,7 @@ export function Users(props: UsersPropsType) {
                     u.followed ?
 
                         <button onClick={() => {
-                            debugger
+
                             props.unfollow(u.id)
                         }}>Unfollow</button> :
 

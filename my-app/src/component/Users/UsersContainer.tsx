@@ -8,12 +8,16 @@ import {
     DispatchActionTypeUsers
 } from "../../Redux/usersReducer";
 import {StateType, UserElType, UserPageType} from "../../Redux/store";
+import {UsersClass} from "./UsersClass";
 
 
 function mapStateProps(state: StateType) {
 
     return {
-        usersPage: state.usersPage.items
+        usersPage: state.usersPage.items,
+        pageSize: state.usersPage.pageSize,
+        totalUsersCount: state.usersPage.totalUsersCount,
+        currentPage: state.usersPage.currentPage,
     }
 
 }
@@ -22,7 +26,7 @@ function mapDispatchProps(dispatch: (action: DispatchActionTypeUsers) => void) {
 
     return {
         follow: (userID: number) => {
-            debugger
+
             dispatch(createFollowAction(userID))
         },
         unfollow: (userID: number) => {
@@ -37,7 +41,7 @@ function mapDispatchProps(dispatch: (action: DispatchActionTypeUsers) => void) {
 }
 
 
-export const UsersContainer = connect(mapStateProps, mapDispatchProps)(Users);
+export const UsersContainer = connect(mapStateProps, mapDispatchProps)(UsersClass);
 
 
 
