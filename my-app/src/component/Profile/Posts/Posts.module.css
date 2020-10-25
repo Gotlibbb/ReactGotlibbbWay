@@ -1,0 +1,18 @@
+.posts  {
+    padding-left: 15px;
+    font-size: 25px;
+}
+.title{
+    padding-top: 50px;
+    padding-bottom: 15px;
+}
+.btnSend {
+    font-size: 25px;
+}
+.textarea{
+    font-size: 25px;
+
+    height:70px ;
+    width: 500px;
+}
+

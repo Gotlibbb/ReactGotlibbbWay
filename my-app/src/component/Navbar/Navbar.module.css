@@ -1,0 +1,26 @@
+.nav {
+    grid-area: n;
+    background-color: darkorange;
+    padding: 40px;
+
+    font-size: 25px;
+}
+
+.nav div{
+    margin: 5px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+
+}
+
+.nav .activeHover  {
+    color:greenyellow ;
+}
+
+.nav a:hover {
+    color: cyan;
+}
