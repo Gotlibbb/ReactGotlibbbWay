@@ -1,44 +1,63 @@
 import React from "react";
 import {UserElType, UserPageType} from "../../Redux/store";
-import  axios from 'axios';
+import axios from 'axios';
 import no_ava from '../../images/no_ava.jpg'
 import styles from './users.module.css'
-import {render} from "react-dom";
 
 type UsersPropsType = {
     usersPage: UserElType[]
     follow: (userID: number) => void
     unfollow: (userID: number) => void
+    setCurrentPage: (currentPage: number) => void
     setUsers: (UsersData: UserElType[]) => void
-    pageSize?: number
-    totalUsersCount?: number
-    currentPage?: number
+    setTotalCount: (setTotalCount: number) => void
+    pageSize:  number
+    totalUsersCount:  number
+    currentPage:  number
 }
 
 
-
-
-export class UsersClass extends React.Component <UsersPropsType,UserElType> {
+export class UsersClass extends React.Component <UsersPropsType, UserElType> {
 
     componentDidMount() {
-        axios.get<UserPageType>("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+        axios.get<UserPageType>(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+            this.props.setUsers(response.data.items);
+            this.props.setTotalCount(response.data.totalCount)
+        })
+
+    }
+    onPageChanged = (page:number) => {
+         this.props.setCurrentPage(page);
+        axios.get<UserPageType>(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`).then(response => {
             this.props.setUsers(response.data.items);
         })
+
     }
 
+    // пробегаемся по массиву фором, добавляем каждому элементу номер страницы
 
 
-    render()  {
+    render() {
 
 
+        let pageCount:number|undefined = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
 
-        return(<div>
+        let pages = [];
+
+        for (let i = 1; i <= pageCount; i++) {
+            pages.push(i)
+        }
+
+//мапим элементы в спан и следим за активной страницей currentPage сравнивая с элементом
+
+        return (<div>
                 <div>
-                    <span className={styles.selectedPage}>1</span>
-                    <span>2</span>
-                    <span>3</span>
-                    <span>4</span>
-                    <span>5</span>
+                    {pages.map(p=>{
+                        return <span onClick={()=>{this.onPageChanged(p)}} className={this.props.currentPage=== p && styles.selectedPage || "" }>{p}</span>
+
+
+
+                    })}
                 </div>
                 {this.props.usersPage.map(u => <div key={u.id}>
 
@@ -61,10 +80,6 @@ export class UsersClass extends React.Component <UsersPropsType,UserElType> {
                 </div>)}
             </div>
         );
-
-
-
-
 
 
     }

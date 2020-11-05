@@ -5,7 +5,7 @@ import {
     createFollowAction,
     createSetUsersAction,
     createUnFollowAction,
-    DispatchActionTypeUsers
+    DispatchActionTypeUsers, setCurrentPageAC, setTotalCountAC
 } from "../../Redux/usersReducer";
 import {StateType, UserElType, UserPageType} from "../../Redux/store";
 import {UsersClass} from "./UsersClass";
@@ -16,7 +16,7 @@ function mapStateProps(state: StateType) {
     return {
         usersPage: state.usersPage.items,
         pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
+        totalUsersCount: state.usersPage.totalCount,
         currentPage: state.usersPage.currentPage,
     }
 
@@ -25,6 +25,9 @@ function mapStateProps(state: StateType) {
 function mapDispatchProps(dispatch: (action: DispatchActionTypeUsers) => void) {
 
     return {
+        setCurrentPage: (currentPage: number)=> {
+            dispatch(setCurrentPageAC(currentPage))
+        },
         follow: (userID: number) => {
 
             dispatch(createFollowAction(userID))
@@ -35,6 +38,9 @@ function mapDispatchProps(dispatch: (action: DispatchActionTypeUsers) => void) {
         },
         setUsers: (items: UserElType[])=> {
             dispatch(createSetUsersAction(items))
+        },
+        setTotalCount: (totalUsersCount: number)=> {
+            dispatch(setTotalCountAC(totalUsersCount))
         },
     }
 

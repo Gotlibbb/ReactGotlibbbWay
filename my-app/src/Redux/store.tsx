@@ -43,9 +43,9 @@ export type ProfilePageType = {
 
 export type UserPageType = {
     items: UserElType[]
-    pageSize?: number
-    totalUsersCount?: number
-    currentPage?: number
+    pageSize: number
+    totalCount: number
+    currentPage: number
 }
 
 export type StateType = {
