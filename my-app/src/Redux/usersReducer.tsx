@@ -5,7 +5,7 @@ let initialState = {
     items: [ ],
     pageSize: 5,
     totalCount: 0,
-    currentPage: 2,
+    currentPage: 1,
 
 }
 
