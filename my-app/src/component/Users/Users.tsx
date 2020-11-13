@@ -12,20 +12,20 @@ type UsersPropsType = {
     isFetching: boolean
     totalUsersCount: number
     pageSize: number
-    currentPage:number
+    currentPage: number
 
 }
 
 export function Users(props: UsersPropsType) {
 
-    let pageCount:number|undefined = Math.ceil(props.totalUsersCount / props.pageSize);
+    let pageCount: number | undefined = Math.ceil(props.totalUsersCount / props.pageSize);
 
     let pages = [];
 
     for (let i = 1; i <= pageCount; i++) {
         pages.push(i)
     }
-    return <div>
+    return <div className={styles.usersPage}>
         <div>
             {pages.map(p => {
                 return <span onClick={() => {
@@ -35,25 +35,28 @@ export function Users(props: UsersPropsType) {
 
             })}
         </div>
-        {props.usersPage.map(u => <div key={u.id}>
+        <div className={styles.usersBlock}>
+            {props.usersPage.map(u => <div key={u.id} className={styles.user}>
 
-            <div>{u.name}</div>
-            <img src={u.photos.small != null ? u.photos.small : no_ava} style={{width: "150px", borderRadius: "40%"}}/>
-            <div>
-                {
-                    u.followed ?
+                <div>{u.name}</div>
+                <img src={u.photos.small != null ? u.photos.small : no_ava}
+                     style={{width: "150px", borderRadius: "40%"}}/>
+                <div>
+                    {
+                        u.followed ?
 
-                        <button onClick={() => {
+                            <button onClick={() => {
 
-                            props.unfollow(u.id)
-                        }}>Unfollow</button> :
+                                props.unfollow(u.id)
+                            }}>Unfollow</button> :
 
-                        <button onClick={() => {
-                            props.follow(u.id)
-                        }}>Follow</button>}
+                            <button onClick={() => {
+                                props.follow(u.id)
+                            }}>Follow</button>}
 
-            </div>
-        </div>)}
+                </div>
+            </div>)}
+        </div>
     </div>
 }
 
