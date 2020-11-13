@@ -3,19 +3,21 @@ import {UserElType, UserPageType} from "./store"
 
 let initialState = {
     items: [ ],
-    pageSize: 5,
+    pageSize: 10,
     totalCount: 0,
     currentPage: 1,
+    isFetching: false,
 
 }
 
 
 export type DispatchActionTypeUsers =
-    | ReturnType<typeof createFollowAction>
-    | ReturnType<typeof createUnFollowAction>
-    | ReturnType<typeof setCurrentPageAC>
-    | ReturnType<typeof setTotalCountAC>
-    | ReturnType<typeof createSetUsersAction> ;
+    | ReturnType<typeof follow>
+    | ReturnType<typeof unfollow>
+    | ReturnType<typeof setCurrentPage>
+    | ReturnType<typeof setTotalCount>
+    | ReturnType<typeof setIsFetching>
+    | ReturnType<typeof setUsers> ;
 
 
 export const usersReducer = (state: UserPageType = initialState, action: DispatchActionTypeUsers):UserPageType => {
@@ -59,6 +61,11 @@ export const usersReducer = (state: UserPageType = initialState, action: Dispatc
             return {
                 ...state, totalCount: action.totalCount
             }
+        case "SET_IS_FETCH":
+
+            return {
+                ...state, isFetching: action.isFetch
+            }
 
         default:
             return state;
@@ -66,33 +73,39 @@ export const usersReducer = (state: UserPageType = initialState, action: Dispatc
     }
 }
 
-export const createFollowAction = (userID: number) => {
+export const follow = (userID: number) => {
     return {
         type: "FOLLOW",
         userID
     } as const
 };
-export const createUnFollowAction = (userID: number) => {
+export const unfollow = (userID: number) => {
     return {
         type: "UNFOLLOW",
         userID
     } as const
 };
-export const createSetUsersAction = (items: UserElType[]) => {
+export const setUsers = (items: UserElType[]) => {
     return {
         type: "SET_USERS",
         items
     } as const
 };
-export const setCurrentPageAC = (currentPage: number) => {
+export const setCurrentPage = (currentPage: number) => {
     return {
         type: "SET_CURRENT_PAGE",
         currentPage
     } as const
 };
-export const setTotalCountAC = (totalCount: number) => {
+export const setTotalCount = (totalCount: number) => {
     return {
         type: "SET_USERS_COUNT",
         totalCount
+    } as const
+};
+export const setIsFetching = (isFetch: boolean) => {
+    return {
+        type: "SET_IS_FETCH",
+        isFetch
     } as const
 };

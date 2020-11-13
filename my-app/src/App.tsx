@@ -29,7 +29,8 @@ function App() {
                            render={() => <DialogsContainer/>}/>
 
                     <Route path='/Users'
-                           render={() => <UsersContainer />}/>
+
+                           render={() => <UsersContainer  />}/>
 
                     <Route path='/News'
                            render={() => <News/>}/>

@@ -9,7 +9,7 @@ type UsersPropsType = {
     unfollow: (userID: number) => void
     onPageChanged: (p: number) => void
     setUsers: (UsersData: UserElType[]) => void
-
+    isFetching: boolean
     totalUsersCount: number
     pageSize: number
     currentPage:number
@@ -18,18 +18,6 @@ type UsersPropsType = {
 
 export function Users(props: UsersPropsType) {
 
-    // if (props.usersPage.length === 0) {
-    //
-    //
-    //     axios.get<UserPageType>("https://social-network.samuraijs.com/api/1.0/users").then(res => {
-    //
-    //
-    //         props.setUsers(res.data.items)
-    //
-    //     });
-    //
-    //
-    // }
     let pageCount:number|undefined = Math.ceil(props.totalUsersCount / props.pageSize);
 
     let pages = [];
@@ -42,7 +30,7 @@ export function Users(props: UsersPropsType) {
             {pages.map(p => {
                 return <span onClick={() => {
                     props.onPageChanged(p)
-                }} className={props.currentPage === p && styles.selectedPage || ""}>{p}</span>
+                }} className={props.currentPage === p && styles.selectedPage || styles.page}>{p}</span>
 
 
             })}
@@ -50,7 +38,7 @@ export function Users(props: UsersPropsType) {
         {props.usersPage.map(u => <div key={u.id}>
 
             <div>{u.name}</div>
-            <img src={u.photos.small != null ? u.photos.small : no_ava} style={{width: "150px"}}/>
+            <img src={u.photos.small != null ? u.photos.small : no_ava} style={{width: "150px", borderRadius: "40%"}}/>
             <div>
                 {
                     u.followed ?
