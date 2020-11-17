@@ -8,11 +8,11 @@ export function Navbar() {
     return(
 
     <nav className={classes.nav}>
-        <div><NavLink activeClassName={classes["activeHover"]} className={classes.activeClick} to={"/Profile"}>Profile</NavLink></div>
-        <div><NavLink activeClassName={classes.activeHover} className={classes.activeClick} to={"/Dialogs"}>Dialogs</NavLink></div>
-        <div><NavLink activeClassName={classes.activeHover} className={classes.activeClick} to={"/Users"}>Users</NavLink></div>
-        <div><NavLink activeClassName={classes.activeHover} className={classes.activeClick} to={"/News"}>News</NavLink></div>
-        <div><NavLink activeClassName={classes.activeHover} className={classes.activeClick} to={"/Music"}>Music</NavLink></div>
-        <div><NavLink activeClassName={classes.activeHover} className={classes.activeClick} to={"/Settings"}>Settings</NavLink></div>
+        <div><NavLink activeClassName={classes["activeHover"]} className={classes.activeClick} to={"/profile"}>Profile</NavLink></div>
+        <div><NavLink activeClassName={classes.activeHover} className={classes.activeClick} to={"/dialogs"}>Dialogs</NavLink></div>
+        <div><NavLink activeClassName={classes.activeHover} className={classes.activeClick} to={"/users"}>Users</NavLink></div>
+        <div><NavLink activeClassName={classes.activeHover} className={classes.activeClick} to={"/news"}>News</NavLink></div>
+        <div><NavLink activeClassName={classes.activeHover} className={classes.activeClick} to={"/music"}>Music</NavLink></div>
+        <div><NavLink activeClassName={classes.activeHover} className={classes.activeClick} to={"/settings"}>Settings</NavLink></div>
     </nav>
     )}

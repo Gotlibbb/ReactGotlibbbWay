@@ -30,4 +30,6 @@ function mapDispatchProps(dispatch: (action: DispatchActionType) => void   )  {
 
 }
 
+
+
 export const ContainerPosts = connect(mapStateProps, mapDispatchProps)(Posts);

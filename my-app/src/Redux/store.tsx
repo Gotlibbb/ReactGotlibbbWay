@@ -1,5 +1,5 @@
 import {v1} from "uuid";
-import {createAddPostAction, createChangeHandlerAction, profileReducer} from "./profileReducer";
+import {createAddPostAction, createChangeHandlerAction, profileReducer, setUserProfile} from "./profileReducer";
 import {createAddMessageAction, createChangeMessageHandlerAction, dialogsReducer} from "./dialogsReducer";
 
 export type DialogsDataElType = {
@@ -29,6 +29,43 @@ export type UserElType= {
 
 }
 
+export type ProfileType= {
+    "aboutMe": string,
+    "contacts": {
+        "facebook": string,
+        "website": string | null,
+        "vk": string,
+        "twitter": string,
+        "instagram": string,
+        "youtube": string | null,
+        "github": string,
+        "mainLink": string | null
+    },
+    "lookingForAJob": boolean,
+    "lookingForAJobDescription": string,
+    "fullName": string,
+    "userId": number,
+    "photos": {
+        "small": string,
+        "large": string
+    }
+}
+
+export type AuthDataType= {
+    "id": number| null,
+    "login": string| null,
+    "email": string| null
+    "isAuth": boolean}
+
+export type AuthType= {
+
+    data: AuthDataType
+    "messages"?: [],
+    "fieldsErrors"?: [],
+    "resultCode"?: number
+}
+
+
 export type DialogsPageType = {
     dialogsData: Array<DialogsDataElType>
     messagesData: Array<MessagesDataElType>
@@ -39,6 +76,7 @@ export type DialogsPageType = {
 export type ProfilePageType = {
     postData: Array<PostDataElType>
     newPost: string;
+    profile: ProfileType | null
 }
 
 export type UserPageType = {
@@ -56,21 +94,24 @@ export type StateType = {
     usersPage: UserPageType
 }
 
-
-
-export type StoreType = {
-
-    _state: StateType
-    renderTree: (_state: StateType) => void
-    dispatch: (action: DispatchActionType) => void
-    subscribe: (observer: any) => void
-    getState: () => StateType
-}
 export type DispatchActionType =
     ReturnType<typeof createAddPostAction> |
     ReturnType<typeof createChangeHandlerAction> |
     ReturnType<typeof createAddMessageAction> |
+    ReturnType<typeof setUserProfile> |
     ReturnType<typeof createChangeMessageHandlerAction>
+
+
+
+// export type StoreType = {
+//
+//     _state: StateType
+//     renderTree: (_state: StateType) => void
+//     dispatch: (action: DispatchActionType) => void
+//     subscribe: (observer: any) => void
+//     getState: () => StateType
+// }
+
 
 //
 // export const store: StoreType = {

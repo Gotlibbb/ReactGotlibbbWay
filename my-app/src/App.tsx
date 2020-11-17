@@ -10,6 +10,8 @@ import {Settings} from "./component/Settings/Settings";
 import {DialogsContainer} from "./component/Dialogs/DialogsContainer";
 import {Users} from "./component/Users/Users";
 import {UsersContainer} from "./component/Users/UsersContainer";
+import ProfileContainer from './component/Profile/ProfileContainer';
+import HeaderContainer from "./component/Header/HeaderContainer";
 // import {DialogsContainer} from "./component/Dialogs/DialogsContainer";
 
 
@@ -18,27 +20,27 @@ function App() {
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
-                <Header/>
+                <HeaderContainer/>
                 <Navbar/>
                 <div className="app-wrapper-content">
 
-                    <Route path='/Profile'
-                           render={() => <Profile/>}/>
+                    <Route path='/profile/:userId?'
+                           render={() => <ProfileContainer />}/>
 
-                    <Route path='/Dialogs'
+                    <Route path='/dialogs'
                            render={() => <DialogsContainer/>}/>
 
-                    <Route path='/Users'
+                    <Route path='/users'
 
                            render={() => <UsersContainer  />}/>
 
-                    <Route path='/News'
+                    <Route path='/news'
                            render={() => <News/>}/>
 
-                    <Route path='/Music'
+                    <Route path='/music'
                            render={() => <Music/>}/>
 
-                    <Route path='/Settings'
+                    <Route path='/settings'
                            render={() => <Settings/>}/>
 
                 </div>
@@ -46,6 +48,7 @@ function App() {
         </BrowserRouter>
     );
 }
+
 
 
 export default App;

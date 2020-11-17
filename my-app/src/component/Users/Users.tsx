@@ -2,6 +2,7 @@ import React from "react";
 import {UserElType} from "../../Redux/store";
 import no_ava from '../../images/no_ava.jpg'
 import styles from "./users.module.css";
+import { NavLink } from "react-router-dom";
 
 type UsersPropsType = {
     usersPage: UserElType[]
@@ -25,6 +26,7 @@ export function Users(props: UsersPropsType) {
     for (let i = 1; i <= pageCount; i++) {
         pages.push(i)
     }
+
     return <div className={styles.usersPage}>
         <div>
             {pages.map(p => {
@@ -39,8 +41,11 @@ export function Users(props: UsersPropsType) {
             {props.usersPage.map(u => <div key={u.id} className={styles.user}>
 
                 <div>{u.name}</div>
-                <img src={u.photos.small != null ? u.photos.small : no_ava}
-                     style={{width: "150px", borderRadius: "40%"}}/>
+                <NavLink to={'/profile/' + u.id}>
+
+                    <img src={u.photos.small != null ? u.photos.small : no_ava}
+                             style={{width: "150px", borderRadius: "40%"}}/>
+                </NavLink>
                 <div>
                     {
                         u.followed ?

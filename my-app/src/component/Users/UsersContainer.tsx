@@ -68,7 +68,8 @@ class UsersAPIClassComponent extends React.Component <UsersContainerPropsType, U
 //мапим элементы в спан и следим за активной страницей currentPage сравнивая с элементом
 
         return <>
-            {this.props.isFetching ? <Preloader/> : <Users
+            {this.props.isFetching && <Preloader/> }
+                <Users
                 totalUsersCount={this.props.totalUsersCount}
                 currentPage={this.props.currentPage}
                 pageSize={this.props.pageSize}
@@ -78,7 +79,7 @@ class UsersAPIClassComponent extends React.Component <UsersContainerPropsType, U
                 onPageChanged={this.onPageChanged}
                 setUsers={this.props.setUsers}
                 unfollow={this.props.unfollow}
-            />}
+            />
 
         </>
 

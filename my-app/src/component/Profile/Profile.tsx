@@ -2,11 +2,18 @@ import React from "react";
 import classes from "./Profile.module.css"
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {ContainerPosts} from "./Posts/containerPosts";
+import {ProfilePageType, ProfileType} from "../../Redux/store";
 
-export function Profile() {
+type ProfilePropsType={
+    profile: ProfileType|null
+}
+
+export function Profile(props: ProfilePropsType ) {
 
     return <div className={classes.content}>
-        <ProfileInfo/>
+
+
+        <ProfileInfo profile={props.profile}   />
         <ContainerPosts/>
 
 

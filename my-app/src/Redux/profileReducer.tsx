@@ -1,5 +1,8 @@
 import {v1} from "uuid";
-import {DispatchActionType, PostDataElType, ProfilePageType,} from "./store";
+import {DispatchActionType, PostDataElType, ProfilePageType, ProfileType,} from "./store";
+import {createAddMessageAction, createChangeMessageHandlerAction} from "./dialogsReducer";
+
+
 
 let initialState : ProfilePageType ={
     newPost: "",
@@ -8,7 +11,9 @@ let initialState : ProfilePageType ={
         {idPost: v1(), post: "It`s my first post", likesCount: 5},
         {idPost: v1(), post: "I don`t have coronavirus", likesCount: 1},
         {idPost: v1(), post: "Hey, don`t go to the forbidden forest!!!", likesCount: 0},
-    ]
+    ],
+    profile: null
+
 }
 
 export const profileReducer = (state: ProfilePageType = initialState, action: DispatchActionType):ProfilePageType => {
@@ -47,6 +52,17 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Di
                 newPost: action.newText
             }
 
+
+        case "SET_USER_PROFILE" :
+
+            return {
+                ...state,
+                profile: action.profile
+            }
+
+
+
+
         default:
             return state;
 
@@ -68,3 +84,12 @@ export const createChangeHandlerAction = (newText: string) => {
         newText: newText,
     } as const
 };
+export const setUserProfile = (profile: ProfileType) => {
+
+
+    return {
+        type: "SET_USER_PROFILE",
+        profile,
+    } as const
+};
+
