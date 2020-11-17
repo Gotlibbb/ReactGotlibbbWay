@@ -6,16 +6,15 @@ import {DispatchActionType, StateType} from "../../../Redux/store";
 import {store} from "../../../Redux/reduxStore";
 
 
-
 function mapStateProps(state: StateType) {
-    return{
+    return {
         postDataEl: state.profilePage.postData,
         newPost: state.profilePage.newPost
     }
 
 }
 
-function mapDispatchProps(dispatch: (action: DispatchActionType) => void   )  {
+function mapDispatchProps(dispatch: (action: DispatchActionType) => void) {
 
     return {
 
@@ -29,7 +28,6 @@ function mapDispatchProps(dispatch: (action: DispatchActionType) => void   )  {
     }
 
 }
-
 
 
 export const ContainerPosts = connect(mapStateProps, mapDispatchProps)(Posts);

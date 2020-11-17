@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {AuthDataType, AuthType, StateType} from "../../Redux/store";
+import {AuthDataType, AuthType} from "../../Redux/store";
 import axios from "axios";
 import {Header} from "./Header";
 import {setAuthUserData} from "../../Redux/authReducer";
@@ -41,7 +41,7 @@ class HeaderContainer extends React.Component <HeaderContainerPropsType, AuthDat
 }
 
 function mapStateProps(state: AuthType) {
-    debugger
+
     return {
         auth: state.data.isAuth,
         login: state.data.login
