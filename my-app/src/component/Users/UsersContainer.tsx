@@ -1,17 +1,10 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Users} from "./Users";
-import {
-    follow,
-    setUsers,
-    unfollow,
-    setCurrentPage,
-    setIsFetching,
-    setTotalCount,
-} from "../../Redux/usersReducer";
-import {StateType, UserElType, UserPageType} from "../../Redux/store";
-import axios from "axios";
+import {follow, setCurrentPage, setIsFetching, setTotalCount, setUsers, unfollow,} from "../../Redux/usersReducer";
+import {StateType, UserElType} from "../../Redux/store";
 import {Preloader} from "../../assets/Preloader";
+import {usersAPI} from "../../Api/api";
 
 
 type UsersContainerPropsType = {
@@ -33,10 +26,11 @@ class UsersAPIClassComponent extends React.Component <UsersContainerPropsType, U
 
     componentDidMount() {
         this.props.setIsFetching(true);
-        axios.get<UserPageType>(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {withCredentials: true}).then(response => {
+
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
             this.props.setIsFetching(false);
-            this.props.setUsers(response.data.items);
-            this.props.setTotalCount(response.data.totalCount)
+            this.props.setUsers(data.items);
+            this.props.setTotalCount(data.totalCount)
         })
 
     }
@@ -44,10 +38,12 @@ class UsersAPIClassComponent extends React.Component <UsersContainerPropsType, U
     onPageChanged = (page: number) => {
         this.props.setIsFetching(true);
         this.props.setCurrentPage(page);
-        axios.get<UserPageType>(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`, {withCredentials: true}).then(response => {
-            this.props.setIsFetching(false);
-            this.props.setUsers(response.data.items);
-        })
+
+        usersAPI.getUsers(page, this.props.pageSize)
+            .then(data => {
+                this.props.setIsFetching(false);
+                this.props.setUsers(data.items);
+            })
 
     }
 
@@ -68,8 +64,8 @@ class UsersAPIClassComponent extends React.Component <UsersContainerPropsType, U
 //мапим элементы в спан и следим за активной страницей currentPage сравнивая с элементом
 
         return <>
-            {this.props.isFetching && <Preloader/> }
-                <Users
+            {this.props.isFetching && <Preloader/>}
+            <Users
                 totalUsersCount={this.props.totalUsersCount}
                 currentPage={this.props.currentPage}
                 pageSize={this.props.pageSize}
@@ -128,8 +124,8 @@ function mapStateProps(state: StateType) {
 // }
 
 export const UsersContainer = connect(mapStateProps,
-    { follow,  unfollow, setCurrentPage, setIsFetching, setTotalCount, setUsers}
-    )(UsersAPIClassComponent);
+    {follow, unfollow, setCurrentPage, setIsFetching, setTotalCount, setUsers}
+)(UsersAPIClassComponent);
 
 
 
