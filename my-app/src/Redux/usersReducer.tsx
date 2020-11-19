@@ -7,6 +7,9 @@ let initialState = {
     totalCount: 0,
     currentPage: 1,
     isFetching: false,
+    isFinished: [],
+
+
 
 }
 
@@ -17,6 +20,7 @@ export type DispatchActionTypeUsers =
     | ReturnType<typeof setCurrentPage>
     | ReturnType<typeof setTotalCount>
     | ReturnType<typeof setIsFetching>
+    | ReturnType<typeof toggleFollowingProgress>
     | ReturnType<typeof setUsers> ;
 
 
@@ -66,6 +70,14 @@ export const usersReducer = (state: UserPageType = initialState, action: Dispatc
             return {
                 ...state, isFetching: action.isFetch
             }
+        case "SET_FOLLOWING_PROGRESS":
+
+            return {
+                //...state, isFinished: action.isFinished,
+                ...state, isFinished: action.isFetch ?
+                    [...state.isFinished, action.userId] :
+                    state.isFinished.filter(id=>id!=action.userId)
+            }
 
         default:
             return state;
@@ -107,5 +119,11 @@ export const setIsFetching = (isFetch: boolean) => {
     return {
         type: "SET_IS_FETCH",
         isFetch
+    } as const
+};
+export const toggleFollowingProgress= (isFetch: boolean, userId:number) => {
+    return {
+        type: "SET_FOLLOWING_PROGRESS",
+        isFetch,userId
     } as const
 };

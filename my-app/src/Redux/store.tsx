@@ -1,6 +1,5 @@
-import {v1} from "uuid";
-import {createAddPostAction, createChangeHandlerAction, profileReducer, setUserProfile} from "./profileReducer";
-import {createAddMessageAction, createChangeMessageHandlerAction, dialogsReducer} from "./dialogsReducer";
+import {createAddPostAction, createChangeHandlerAction, setUserProfile} from "./profileReducer";
+import {createAddMessageAction, createChangeMessageHandlerAction} from "./dialogsReducer";
 
 export type DialogsDataElType = {
     dialogsId: string
@@ -18,18 +17,18 @@ export type PostDataElType = {
     likesCount: number
 }
 
-export type UserElType= {
-    name : string
-    id : number
-    uniqueUrlName : null
-    photos: { small: null| undefined, large: null| undefined}
+export type UserElType = {
+    name: string
+    id: number
+    uniqueUrlName: null
+    photos: { small: null | undefined, large: null | undefined }
     status: null
     followed: boolean
 
 
 }
 
-export type ProfileType= {
+export type ProfileType = {
     "aboutMe": string,
     "contacts": {
         "facebook": string,
@@ -51,13 +50,14 @@ export type ProfileType= {
     }
 }
 
-export type AuthDataType= {
-    "id": number| null,
-    "login": string| null,
-    "email": string| null
-    "isAuth": boolean}
+export type AuthDataType = {
+    "id": number | null,
+    "login": string | null,
+    "email": string | null
+    "isAuth": boolean
+}
 
-export type AuthType= {
+export type AuthType = {
 
     data: AuthDataType
     "messages"?: [],
@@ -85,6 +85,7 @@ export type UserPageType = {
     totalCount: number
     currentPage: number
     isFetching: boolean
+    isFinished: number[]
 }
 
 export type StateType = {
@@ -100,7 +101,6 @@ export type DispatchActionType =
     ReturnType<typeof createAddMessageAction> |
     ReturnType<typeof setUserProfile> |
     ReturnType<typeof createChangeMessageHandlerAction>
-
 
 
 // export type StoreType = {

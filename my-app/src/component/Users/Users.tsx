@@ -11,10 +11,13 @@ type UsersPropsType = {
     unfollow: (userID: number) => void
     onPageChanged: (p: number) => void
     setUsers: (UsersData: UserElType[]) => void
+    toggleFollowingProgress: (isFetching: boolean, userId: number) => void
     isFetching: boolean
     totalUsersCount: number
     pageSize: number
     currentPage: number
+    isFinished: number[]
+
 
 }
 
@@ -50,15 +53,19 @@ export function Users(props: UsersPropsType) {
                     </NavLink>
                     <div>
                         {u.followed ?
-                            <button onClick={() => {
+                            <button disabled={props.isFinished.some(id=> id === u.id)} onClick={() => {
+                                props.toggleFollowingProgress(true, u.id);
                                 authAPI.unFollow(u.id).then(data => {
+                                    props.toggleFollowingProgress(false, u.id);
                                     if (data.resultCode === 0) {
                                         props.unfollow(u.id)
                                     }
                                 })
                             }}>Unfollow</button> :
-                            <button onClick={() => {
+                            <button disabled={props.isFinished.some(id=> id === u.id)} onClick={() => {
+                                props.toggleFollowingProgress(true, u.id);
                                 authAPI.follow(u.id).then(data => {
+                                    props.toggleFollowingProgress(false, u.id);
                                     if (data.resultCode === 0) {
                                         props.follow(u.id)
                                     }
