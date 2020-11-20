@@ -1,7 +1,7 @@
 import {v1} from "uuid";
 import {DialogsPageType, DispatchActionType, MessagesDataElType} from "./store";
 
-let initialState : DialogsPageType  = {
+let initialState: DialogsPageType = {
     newMessage: "",
 
     dialogsData: [
@@ -20,10 +20,10 @@ let initialState : DialogsPageType  = {
     ],
 }
 
-export const dialogsReducer = (state: DialogsPageType = initialState , action: DispatchActionType):DialogsPageType => {
+export const dialogsReducer = (state: DialogsPageType = initialState, action: DispatchActionType): DialogsPageType => {
     switch (action.type) {
         case "ADD-MESSAGE" :
-        let newMessage: MessagesDataElType = {
+            let newMessage: MessagesDataElType = {
                 messageId: v1(),
                 message: action.newMessageText,
             };
@@ -36,8 +36,8 @@ export const dialogsReducer = (state: DialogsPageType = initialState , action: D
 
             return {
                 ...state,
-                messagesData:[...state.messagesData, newMessage],
-                newMessage : "",
+                messagesData: [...state.messagesData, newMessage],
+                newMessage: "",
             }
 
         case "CHANGE-NEW-MESSAGE" :
@@ -48,7 +48,7 @@ export const dialogsReducer = (state: DialogsPageType = initialState , action: D
 
             return {
                 ...state,
-                newMessage : action.newMessageText,
+                newMessage: action.newMessageText,
             }
 
         default:

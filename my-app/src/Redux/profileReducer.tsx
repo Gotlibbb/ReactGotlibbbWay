@@ -1,10 +1,10 @@
 import {v1} from "uuid";
 import {DispatchActionType, PostDataElType, ProfilePageType, ProfileType,} from "./store";
-import {createAddMessageAction, createChangeMessageHandlerAction} from "./dialogsReducer";
+import {Dispatch} from "redux";
+import {profileAPI} from "../Api/api";
 
 
-
-let initialState : ProfilePageType ={
+let initialState: ProfilePageType = {
     newPost: "",
 
     postData: [
@@ -16,10 +16,9 @@ let initialState : ProfilePageType ={
 
 }
 
-export const profileReducer = (state: ProfilePageType = initialState, action: DispatchActionType):ProfilePageType => {
+export const profileReducer = (state: ProfilePageType = initialState, action: DispatchActionType): ProfilePageType => {
     switch (action.type) {
-        case "ADD-POST" :
-            {
+        case "ADD-POST" : {
             let newPost: PostDataElType = {
                 idPost: v1(),
                 post: action.post,
@@ -32,11 +31,11 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Di
             //     copyState.newPost = "";
             //     return copyState;
 
-                return {
-                    ...state,
-                    postData: [...state.postData, newPost],
-                    newPost:""
-                }
+            return {
+                ...state,
+                postData: [...state.postData, newPost],
+                newPost: ""
+            }
 
 
         }
@@ -59,8 +58,6 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Di
                 ...state,
                 profile: action.profile
             }
-
-
 
 
         default:
@@ -93,3 +90,12 @@ export const setUserProfile = (profile: ProfileType) => {
     } as const
 };
 
+export const getProfile = (userId: string = "11928") => {
+
+    return (dispatch: Dispatch<DispatchActionType>) => {
+
+        profileAPI.getProfile(userId).then(data => {
+            dispatch(setUserProfile(data));
+        })
+    }
+}

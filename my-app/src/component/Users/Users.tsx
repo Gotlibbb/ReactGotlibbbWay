@@ -3,20 +3,16 @@ import {UserElType} from "../../Redux/store";
 import no_ava from '../../images/no_ava.jpg'
 import styles from "./users.module.css";
 import {NavLink} from "react-router-dom";
-import {authAPI} from "../../Api/api";
 
 type UsersPropsType = {
     usersPage: UserElType[]
-    follow: (userID: number) => void
-    unfollow: (userID: number) => void
     onPageChanged: (p: number) => void
-    setUsers: (UsersData: UserElType[]) => void
-    toggleFollowingProgress: (isFetching: boolean, userId: number) => void
-    isFetching: boolean
     totalUsersCount: number
     pageSize: number
     currentPage: number
     isFinished: number[]
+    getUnFollow: (userId: number) => void
+    getFollow: (userId: number) => void
 
 
 }
@@ -53,23 +49,11 @@ export function Users(props: UsersPropsType) {
                     </NavLink>
                     <div>
                         {u.followed ?
-                            <button disabled={props.isFinished.some(id=> id === u.id)} onClick={() => {
-                                props.toggleFollowingProgress(true, u.id);
-                                authAPI.unFollow(u.id).then(data => {
-                                    props.toggleFollowingProgress(false, u.id);
-                                    if (data.resultCode === 0) {
-                                        props.unfollow(u.id)
-                                    }
-                                })
+                            <button disabled={props.isFinished.some(id => id === u.id)} onClick={() => {
+                                props.getUnFollow(u.id)
                             }}>Unfollow</button> :
-                            <button disabled={props.isFinished.some(id=> id === u.id)} onClick={() => {
-                                props.toggleFollowingProgress(true, u.id);
-                                authAPI.follow(u.id).then(data => {
-                                    props.toggleFollowingProgress(false, u.id);
-                                    if (data.resultCode === 0) {
-                                        props.follow(u.id)
-                                    }
-                                })
+                            <button disabled={props.isFinished.some(id => id === u.id)} onClick={() => {
+                                props.getFollow(u.id)
                             }}>Follow</button>
                         }
                     </div>
