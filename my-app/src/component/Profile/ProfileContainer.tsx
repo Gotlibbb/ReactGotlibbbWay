@@ -4,6 +4,7 @@ import {Profile} from "./Profile";
 import {connect} from "react-redux";
 import {getProfile} from "../../Redux/profileReducer";
 import {RouteComponentProps, withRouter, Redirect} from "react-router-dom";
+import {profileAPI} from "../../Api/api";
 
 type ProfilePropsType = RouteComponentProps<{ userId: string }> & {
     profile: ProfileType | null
@@ -16,13 +17,16 @@ class ProfileContainer extends React.Component<ProfilePropsType, ProfileType> {
 
 
     componentDidMount() {
+        debugger
         this.props.getProfile(this.props.match.params.userId)
+        // @ts-ignore
+        // profileAPI.putMyPhoto("11928").then(data=> data.photos.large("https://wired-7.org/b/src/1530566425534.jpg"))
     }
 
 
     render() {
-        debugger
-        if(!this.props.isAuth) { return <Redirect to={"/login"}/> }
+
+        // if(!this.props.isAuth) { return <Redirect to={"/login"}/> }
         return <Profile {...this.props} profile={this.props.profile}/>;
 
     }

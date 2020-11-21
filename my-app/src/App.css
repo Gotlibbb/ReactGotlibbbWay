@@ -1,19 +1,29 @@
-.app-wrapper {
-    margin: 0 auto;
-    display: grid;
+.app-container {
+    display: flex;
+    flex-direction: column;
 
-    grid-template-areas: "h h" "n c";
-
-    grid-template-rows: 60px 1fr;
-    grid-template-columns: 2fr 10fr;
-    grid-gap: 10px;
 }
 
-.app-wrapper-content {
+.content-block{
+    display: flex;
+    border: 1px solid;
+}
 
-    grid-area: c;
+.content {
+    width: 88%;
     background-color: cyan;
-
+    border: 1px solid;
 }
 
 
+.navbar{
+    min-width: 110px;
+    width: 12%;
+    border: 1px solid;
+    background-color: darkorange;
+}
+
+.header{
+    width: 100%;
+    height: 100%;
+}

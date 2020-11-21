@@ -1,15 +1,25 @@
 .header {
-    grid-area: h;
     background-color: greenyellow;
+    display: flex;
+    justify-content: space-between;
+
 }
 .header img {
     width:65px;
+
 }
 
 .login{
-    float: right;
+    margin: 15px 15px;
+}
+
+.login a:hover {
+    color: white;
 }
 
 .login a {
-    color: white;
+    color: #333333;
+    font-size: 28px;
+    font-weight: bolder;
+    text-decoration: none;
 }

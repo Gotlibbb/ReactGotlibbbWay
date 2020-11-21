@@ -1,5 +1,5 @@
-import myimage from "../../../images/unnamed.jpg";
-import no_ava from '../../../images/no_ava.jpg'
+
+import no_ava from '../../../images/no_ava.png'
 
 
 import React from "react";
@@ -16,12 +16,15 @@ export function ProfileInfo(props: ProfileInfoPropsType) {
     if (!props.profile) {
         return <Preloader/>
     }
+
+    let imgAny = props.profile.photos.large ? props.profile.photos.large : no_ava;
+
     return <div>
-        <img className={classes.photoFone} src={myimage} alt={""}/>
+
 
         <div className={classes.user}>
             <h2>{props.profile.fullName}</h2>
-            <img className={classes.userAva} src={props.profile.photos.large ? props.profile.photos.large : no_ava} alt={""}/>
+            <img className={classes.userAva} src={imgAny} alt={""}/>
             <div>{props.profile.aboutMe}</div>
             <div>{props.profile.lookingForAJob}</div>
             <div>{props.profile.contacts.github}</div>

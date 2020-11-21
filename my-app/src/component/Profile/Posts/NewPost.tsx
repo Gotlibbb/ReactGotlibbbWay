@@ -1,6 +1,6 @@
 import classes from "./NewPosts.module.css";
 import React from "react";
-import myava from "../../../images/hagrid_1.jpg";
+import myava from "../../../images/my_ava.jpg";
 
 type PostPropsType= {
     post: string

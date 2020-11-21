@@ -1,8 +1,9 @@
 import React from "react";
 import {UserElType} from "../../Redux/store";
-import no_ava from '../../images/no_ava.jpg'
+import no_ava from '../../images/no_ava.png'
 import styles from "./users.module.css";
 import {NavLink} from "react-router-dom";
+import {Preloader} from "../../assets/Preloader";
 
 type UsersPropsType = {
     usersPage: UserElType[]
@@ -13,6 +14,7 @@ type UsersPropsType = {
     isFinished: number[]
     getUnFollow: (userId: number) => void
     getFollow: (userId: number) => void
+    isFetching:boolean
 
 
 }
@@ -28,7 +30,7 @@ export function Users(props: UsersPropsType) {
     }
 
     return <div className={styles.usersPage}>
-        <div>
+        <div className={styles.pageS}>
             {pages.map(p => {
                 return <span onClick={() => {
                     props.onPageChanged(p)
@@ -37,6 +39,7 @@ export function Users(props: UsersPropsType) {
 
             })}
         </div>
+        <div>{props.isFetching && <Preloader/>}</div>
         <div className={styles.usersBlock}>
             {props.usersPage.map
             (u => <div key={u.id} className={styles.user}>
@@ -45,7 +48,8 @@ export function Users(props: UsersPropsType) {
                     <NavLink to={'/profile/' + u.id}>
 
                         <img src={u.photos.small != null ? u.photos.small : no_ava}
-                             style={{width: "150px", borderRadius: "40%"}} alt={""}/>
+                             style={u.photos.small === null ? {"opacity": "30%"} : {"opacity": "100%"}}
+                              alt={""}/>
                     </NavLink>
                     <div>
                         {u.followed ?

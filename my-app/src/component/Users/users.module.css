@@ -1,33 +1,68 @@
-.selectedPage{
-    font-weight: bold;
-    font-size: 25px;
-    margin: 3px;
+.selectedPage {
+    font-weight: 1000;
 
-}
 
-.page{
-
-    background-color: white;
-    margin: 1px;
+    background-color: gray;
+    color: white;
     border: 1px solid;
-    padding: 1px;
+
+
 }
 
-.usersPage{
+.pageS {
+    display: flex;
+    height: 30px;
+}
+
+.page {
+
+    min-width: 20px;
+    background-color: white;
+    border: 1px solid;
+
+}
+
+.pageS span {
+    min-width: 30px;
+    width: 30px;
+    text-align: center;
+}
+
+.usersPage {
     display: flex;
     flex-direction: column;
 
 }
 
 
-.usersBlock{
-border: 1px solid;
+.usersBlock {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: 1px solid;
+    justify-content:  center;
+     align-items: center;
 
 
 }
 
-.user{
-    border: 1px solid;
-    width: 150px;
+.user button {
+    font-size: 20px;
 
+
+}
+.user img {
+
+    width: 155px;
+    border-radius: 40%
+
+}
+.user {
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    /*border: 1px dashed;*/
+    width: 150px;
+    margin: 5px;
 }

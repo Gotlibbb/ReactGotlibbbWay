@@ -2,13 +2,9 @@
     font-size: 30px;
     padding-left: 15px;
 }
-.photoFone{
-    width:100%;
-}
+
 .user .userAva
 {
-    width: 30%;
-
-
+    width: 50vh;
     border-radius: 10%;
 }
