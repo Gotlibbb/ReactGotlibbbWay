@@ -93,6 +93,7 @@ export type StateType = {
     dialogPage: DialogsPageType
     profilePage: ProfilePageType
     usersPage: UserPageType
+    data: AuthDataType
 }
 
 export type DispatchActionType =

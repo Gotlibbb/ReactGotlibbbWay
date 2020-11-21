@@ -11,7 +11,8 @@ function mapStateProps(state: StateType) {
     return{
         messagesData: state.dialogPage.messagesData,
         dialogsData: state.dialogPage.dialogsData,
-        newMessage: state.dialogPage.newMessage
+        newMessage: state.dialogPage.newMessage,
+        isAuth: state.data.isAuth
     }
 
 }

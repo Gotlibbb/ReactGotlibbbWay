@@ -3,6 +3,7 @@ import classes from "./Dialogs.module.css";
 import {DialogName} from "./DialogName";
 import {DialogsMessage} from "./DialogsMessages";
 import {DialogsDataElType, MessagesDataElType} from "../../Redux/store";
+import {Redirect} from "react-router-dom";
 
 type DialogsPageTypeProps = {
     dialogsData: Array<DialogsDataElType>
@@ -10,7 +11,7 @@ type DialogsPageTypeProps = {
     addMessages: () => void
     onChangeMessage: (text: string) => void
     newMessage: string
-
+    isAuth: boolean
 }
 
 
@@ -28,6 +29,7 @@ export function Dialogs(props: DialogsPageTypeProps) {
         props.addMessages()
     }
 
+    if(!props.isAuth) { return <Redirect to={"/login"}/> }
 
     return <div className={classes.Dialogs}>
         <div className={classes.dialogsNames}>

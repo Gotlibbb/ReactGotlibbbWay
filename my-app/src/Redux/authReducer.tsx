@@ -24,7 +24,7 @@ export const authReducer = (state: AuthDataType = initialState, action: Dispatch
             return {
                 ...state,
                 ...action.data,
-                isAuth: true
+                isAuth: true,
             }
 
 
@@ -51,6 +51,7 @@ export const getAuth = () => {
             if (data.resultCode === 0) {
                 let {id, login, email} = data.data;
                 dispatch(setAuthUserData(id, login, email))
+
             }
 
         })
