@@ -26,9 +26,14 @@
     font-weight: bold;
 
 }
-
 .nav a:hover {
-    color: gray;
+    color: greenyellow;
+    font-weight: bold;
+
+}
+
+.nav a:active  {
+    color: #ec1717;
     font-weight: bold;
 
 }

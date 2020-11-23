@@ -1,4 +1,5 @@
 .user{
+    text-align: center;
     font-size: 30px;
     padding-left: 15px;
 }
@@ -6,5 +7,6 @@
 .user .userAva
 {
     width: 50vh;
-    border-radius: 10%;
+    border-radius: 50%;
+    background-color: white;
 }

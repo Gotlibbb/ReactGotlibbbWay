@@ -1,6 +1,6 @@
 .selectedPage {
     font-weight: 1000;
-
+    cursor: pointer;
 
     background-color: gray;
     color: white;
@@ -8,10 +8,36 @@
 
 
 }
+.selectedPage:active {
+    font-weight: 1000;
+    cursor: pointer;
+
+    background-color: #ec1717;
+    color: white;
+    border: 1px solid;
+
+}
 
 .pageS {
     display: flex;
     height: 30px;
+}
+
+.page:hover {
+    font-weight: 1000;
+    cursor: pointer;
+
+    background-color: gray;
+    color: white;
+    border: 1px solid;
+}
+.page:active {
+    font-weight: 1000;
+    cursor: pointer;
+
+    background-color: #ec1717;
+    color: white;
+    border: 1px solid;
 }
 
 .page {
@@ -21,6 +47,8 @@
     border: 1px solid;
 
 }
+
+
 
 .pageS span {
     min-width: 30px;
@@ -35,34 +63,111 @@
 }
 
 
+
+
+
+
+
+
+
+
 .usersBlock {
+
     height: 100vh;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    border: 1px solid;
-    justify-content:  center;
+    border: 1px solid white;
+    justify-content:  inherit;
      align-items: center;
 
 
 }
-
+a{
+    text-decoration: none;
+    color: black;
+}
 .user button {
+    background-color: lightgreen;
     font-size: 20px;
+    border-radius: 10%;
 
 
 }
+.user button:active {
+    font-weight: bold;
+    background-color: #7aec17;
+    font-size: 20px;
+    border-radius: 10%;
+
+
+}
+
 .user img {
 
     width: 155px;
-    border-radius: 40%
+    background-color:white ;
+    border-radius: 50%;
 
 }
 .user {
+    opacity: 50%;
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    border: 1px dashed;
+    width: 300px;
+    height: 230px;
+
+    margin: 5px;
+}
+.user:hover {
+    opacity: 80%;
+
+}
+.user:active {
+    opacity: 100%;
+}
+
+.userFollow {
+    opacity: 100%;
     font-weight: bold;
     font-size: 25px;
     text-align: center;
     /*border: 1px dashed;*/
     width: 150px;
     margin: 5px;
+}
+.userFollow img:active {
+    background-color: #7aec17;
+}
+.userFollow:hover {
+    opacity: 100%;
+
+}
+.userFollow img {
+
+    width: 155px;
+    border-radius: 50%;
+    background-color:white ;
+
+
+}
+
+.userFollow button {
+    background-color: lightcoral;
+    font-size: 20px;
+    border-radius: 10%;
+    opacity: 100%;
+
+
+}
+.userFollow button:active {
+    font-weight: bold;
+    background-color: red;
+    font-size: 20px;
+    border-radius: 10%;
+}
+button:hover{
+    cursor: pointer;
 }

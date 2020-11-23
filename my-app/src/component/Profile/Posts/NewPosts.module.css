@@ -1,4 +1,4 @@
-.newPost img
+.userPhoto
 {
     overflow: hidden;
 
@@ -16,7 +16,24 @@
 .post{
     font-size: 25px;
 }
+
+
+.postLike:hover {
+    cursor: pointer;
+    opacity: 70%;
+}
+.postLike:active {
+    cursor: pointer;
+    opacity: 100%;
+}
 .postLike{
+    opacity: 50%;
     color: red;
     padding-left: 20px;
+    font-weight: bold;
+}
+
+.postLike img{
+    width: 50px;
+
 }
