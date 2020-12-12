@@ -4,6 +4,8 @@ import {Users} from "./Users";
 import {getFollow, getUnFollow, getUsers, setCurrentPage, setIsFetching,} from "../../Redux/usersReducer";
 import {StateType, UserElType} from "../../Redux/store";
 import {Preloader} from "../../assets/Preloader";
+import {compose} from "redux";
+import {authUserHOC} from "../../HOC/AuthRedirect";
 
 
 type UsersContainerPropsType = {
@@ -111,18 +113,17 @@ function mapStateProps(state: StateType) {
 //     }
 //
 // }
+let mdtp = {
+    setCurrentPage,
+    setIsFetching,
 
+    getUnFollow,
+    getFollow,
+    getUsers
+}
 
-export const UsersContainer = connect(mapStateProps,
-    {
-        setCurrentPage,
-        setIsFetching,
+export const UsersContainer =compose<Function>(connect(mapStateProps,mdtp), authUserHOC)(UsersAPIClassComponent)
 
-        getUnFollow,
-        getFollow,
-        getUsers
-    }
-)(UsersAPIClassComponent);
 
 
 

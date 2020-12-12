@@ -4,6 +4,8 @@ import {Dialogs} from "./Dialogs";
 import {connect} from "react-redux";
 import {DispatchActionType, StateType} from "../../Redux/store";
 import {store} from "../../Redux/reduxStore";
+import {authUserHOC} from "../../HOC/AuthRedirect";
+import {compose} from "redux";
 
 
 function mapStateProps(state: StateType) {
@@ -12,7 +14,6 @@ function mapStateProps(state: StateType) {
         messagesData: state.dialogPage.messagesData,
         dialogsData: state.dialogPage.dialogsData,
         newMessage: state.dialogPage.newMessage,
-        isAuth: state.data.isAuth
     }
 
 }
@@ -34,7 +35,9 @@ function mapDispatchProps(dispatch: (action: DispatchActionType) => void   )  {
 
 
 
-export const DialogsContainer = connect(mapStateProps, mapDispatchProps)(Dialogs);
+
+
+export const DialogsContainer = compose<Function>(connect(mapStateProps, mapDispatchProps),authUserHOC)(Dialogs)
 
 
 

@@ -16,6 +16,7 @@ import {Login} from "./component/login/Login";
 
 function App() {
 
+    // @ts-ignore
     return (
         <BrowserRouter>
             <div className='app-container'>
@@ -32,6 +33,7 @@ function App() {
                     <div className={"content"}>
 
                         <Route path='/profile/:userId?'
+
                                render={() => <ProfileContainer/>}/>
                         <Route path='/login'
                                render={() => <Login/>}/>

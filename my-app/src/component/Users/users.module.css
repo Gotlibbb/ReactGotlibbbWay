@@ -115,7 +115,7 @@ a{
     font-weight: bold;
     font-size: 25px;
     text-align: center;
-    border: 1px dashed;
+    /*border: 1px dashed;*/
     width: 300px;
     height: 230px;
 

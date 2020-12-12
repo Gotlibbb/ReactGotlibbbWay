@@ -1,15 +1,16 @@
-import React from "react";
+import React, {ComponentClass, FunctionComponent} from "react";
 import {ProfileType, StateType} from "../../Redux/store";
 import {Profile} from "./Profile";
 import {connect} from "react-redux";
 import {getProfile} from "../../Redux/profileReducer";
-import {RouteComponentProps, withRouter, Redirect} from "react-router-dom";
-import {profileAPI} from "../../Api/api";
+import {Redirect, RouteComponentProps, withRouter} from "react-router-dom";
+import {authUserHOC} from "../../HOC/AuthRedirect";
+import { compose } from "redux";
 
 type ProfilePropsType = RouteComponentProps<{ userId: string }> & {
     profile: ProfileType | null
     getProfile: (userId: string) => void
-    isAuth : boolean
+    isAuth: boolean
 }
 
 
@@ -17,16 +18,15 @@ class ProfileContainer extends React.Component<ProfilePropsType, ProfileType> {
 
 
     componentDidMount() {
-        debugger
         this.props.getProfile(this.props.match.params.userId)
-        // @ts-ignore
-        // profileAPI.putMyPhoto("11928").then(data=> data.photos.large("https://wired-7.org/b/src/1530566425534.jpg"))
     }
 
 
     render() {
 
-        // if(!this.props.isAuth) { return <Redirect to={"/login"}/> }
+
+
+
         return <Profile {...this.props} profile={this.props.profile}/>;
 
     }
@@ -34,11 +34,7 @@ class ProfileContainer extends React.Component<ProfilePropsType, ProfileType> {
 
 let mapStateToProps = (state: StateType) => ({
     profile: state.profilePage.profile,
-    isAuth: state.data.isAuth
 })
 
-
-export default connect(mapStateToProps, {getProfile})(withRouter(ProfileContainer));
-
-
+export default compose<Function>( connect (mapStateToProps, {getProfile}) ,withRouter,authUserHOC)(ProfileContainer)
 
