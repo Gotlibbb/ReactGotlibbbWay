@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {AuthDataType, AuthType} from "../../Redux/store";
 import {Header} from "./Header";
 import {getAuth, logout} from "../../Redux/authReducer";
+import {getAuthSelector, getLoginSelector} from "./header-selector";
 
 
 type HeaderContainerPropsType = {
@@ -33,8 +34,9 @@ class HeaderContainer extends React.Component <HeaderContainerPropsType, AuthDat
 function mapStateProps(state: AuthType) {
 
     return {
-        auth: state.data.isAuth,
-        login: state.data.login
+        auth: getAuthSelector(state),
+        login: getLoginSelector(state),
+
     }
 
 }

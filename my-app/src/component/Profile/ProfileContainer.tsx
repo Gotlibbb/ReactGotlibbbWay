@@ -6,6 +6,7 @@ import {getProfile, getProfileStatus, updateProfileStatus} from "../../Redux/pro
 import {Redirect, RouteComponentProps, withRouter} from "react-router-dom";
 import {authUserHOC} from "../../HOC/AuthRedirect";
 import { compose } from "redux";
+import {getAuthIdSelector, getProfileSelector, getProfileStatusSelector} from "./profile-selector";
 
 type ProfilePropsType = RouteComponentProps<{ userId: string }> & {
     profile: ProfileType | null
@@ -14,7 +15,7 @@ type ProfilePropsType = RouteComponentProps<{ userId: string }> & {
     updateProfileStatus: (status: Object| null) => void
     isAuth: boolean
     profileStatus: string
-    authoresId: string
+    authId: string
 }
 
 
@@ -25,7 +26,7 @@ class ProfileContainer extends React.Component<ProfilePropsType, ProfileType> {
         debugger
         let userId = this.props.match.params.userId
         if (!userId ) {
-            userId = this.props.authoresId
+            userId = this.props.authId
             if (!userId ) this.props.history.push("/login")
 
 
@@ -43,9 +44,9 @@ class ProfileContainer extends React.Component<ProfilePropsType, ProfileType> {
 }
 
 let mapStateToProps = (state: StateType) => ({
-    profile: state.profilePage.profile,
-    profileStatus: state.profilePage.profileStatus,
-    authoresId : state.data.id
+    profile: getProfileSelector(state),
+    profileStatus: getProfileStatusSelector(state),
+    authId : getAuthIdSelector(state),
 })
 
 export default compose<Function>( connect (mapStateToProps, {getProfile, getProfileStatus, updateProfileStatus}), authUserHOC,withRouter)(ProfileContainer)

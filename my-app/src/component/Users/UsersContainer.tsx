@@ -3,9 +3,15 @@ import {connect} from "react-redux";
 import {Users} from "./Users";
 import {getFollow, getUnFollow, getUsers, setCurrentPage, setIsFetching,} from "../../Redux/usersReducer";
 import {StateType, UserElType} from "../../Redux/store";
-import {Preloader} from "../../assets/Preloader";
 import {compose} from "redux";
-import {authUserHOC} from "../../HOC/AuthRedirect";
+import {
+    getCurrentPageSelector,
+    getIsFetchingSelector,
+    getIsFinishedSelector,
+    getPageSizeSelector,
+    getTotalUsersCountSelector,
+    getUsersPageSelector
+} from "./user-selector";
 
 
 type UsersContainerPropsType = {
@@ -77,12 +83,13 @@ class UsersAPIClassComponent extends React.Component <UsersContainerPropsType, U
 function mapStateProps(state: StateType) {
 
     return {
-        usersPage: state.usersPage.items,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        isFinished: state.usersPage.isFinished
+        usersPage: getUsersPageSelector(state),
+        pageSize: getPageSizeSelector(state),
+        totalUsersCount: getTotalUsersCountSelector(state),
+        currentPage: getCurrentPageSelector(state),
+        isFetching: getIsFetchingSelector(state),
+        isFinished: getIsFinishedSelector(state),
+
     }
 
 }
@@ -122,7 +129,7 @@ let mdtp = {
     getUsers
 }
 
-export const UsersContainer =compose<Function>(connect(mapStateProps,mdtp))(UsersAPIClassComponent)
+export const UsersContainer = compose<Function>(connect(mapStateProps, mdtp))(UsersAPIClassComponent)
 
 
 

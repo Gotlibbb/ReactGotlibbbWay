@@ -3,22 +3,22 @@ import {createAddMessageAction} from "../../Redux/dialogsReducer";
 import {Dialogs} from "./Dialogs";
 import {connect} from "react-redux";
 import {DispatchActionType, StateType} from "../../Redux/store";
-import {store} from "../../Redux/reduxStore";
 import {authUserHOC} from "../../HOC/AuthRedirect";
 import {compose} from "redux";
+import {getDialogsDataSelector, getMessagesDataSelector, getNewMessageSelector} from "./dialogs-selector";
 
 
 function mapStateProps(state: StateType) {
 
-    return{
-        messagesData: state.dialogPage.messagesData,
-        dialogsData: state.dialogPage.dialogsData,
-        newMessage: state.dialogPage.newMessage,
+    return {
+        messagesData: getMessagesDataSelector(state),
+        dialogsData: getDialogsDataSelector(state),
+        newMessage: getNewMessageSelector(state),
     }
 
 }
 
-function mapDispatchProps(dispatch: (action: DispatchActionType) => void   )  {
+function mapDispatchProps(dispatch: (action: DispatchActionType) => void) {
 
     return {
 
@@ -34,10 +34,7 @@ function mapDispatchProps(dispatch: (action: DispatchActionType) => void   )  {
 }
 
 
-
-
-
-export const DialogsContainer = compose<Function>(connect(mapStateProps, mapDispatchProps),authUserHOC)(Dialogs)
+export const DialogsContainer = compose<Function>(connect(mapStateProps, mapDispatchProps), authUserHOC)(Dialogs)
 
 
 
