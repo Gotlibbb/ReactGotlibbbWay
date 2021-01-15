@@ -1,5 +1,5 @@
 import React from "react";
-import {createAddPostAction, createChangeHandlerAction} from "../../../Redux/profileReducer";
+import {createAddPostAction} from "../../../Redux/profileReducer";
 import {Posts} from "./Posts";
 import {connect} from "react-redux";
 import {DispatchActionType, StateType} from "../../../Redux/store";
@@ -18,12 +18,10 @@ function mapDispatchProps(dispatch: (action: DispatchActionType) => void) {
 
     return {
 
-        changeHandler: (newText: string) => {
-            dispatch(createChangeHandlerAction(newText))
-        },
-        addPost: () => {
 
-            dispatch(createAddPostAction(store.getState().profilePage.newPost))
+        addPost: (post: string) => {
+
+            dispatch(createAddPostAction(post))
         }
     }
 

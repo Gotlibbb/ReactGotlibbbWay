@@ -1,0 +1,22 @@
+.formControl {
+
+}
+
+
+.error textarea {
+    border: red 2px solid;
+}
+.error  input{
+    border: red 2px solid;
+}
+.error span{
+    color: red
+}
+
+.authError {
+    border: red 2px solid;
+    color: red;
+    font-weight: bold;
+    font-size: 50px;
+
+}

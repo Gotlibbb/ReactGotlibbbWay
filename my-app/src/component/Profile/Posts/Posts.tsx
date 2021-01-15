@@ -1,14 +1,16 @@
-import React, {ChangeEvent} from "react";
+import React from "react";
 import {NewPost} from "./NewPost";
 import {PostDataElType} from "../../../Redux/store";
 import classes from "./Posts.module.css"
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import {required, maxLength} from "../../../utils/validators/validators";
+import {Textarea} from "../../../assets/FormControls/FormControl";
 
 
 type PostTypeProps = {
     postDataEl: Array<PostDataElType>
     newPost: string
-    changeHandler: (text: string) => void
-    addPost: () => void
+    addPost: (value : any) => void
 }
 
 
@@ -16,30 +18,33 @@ export function Posts(props: PostTypeProps) {
 
     let postElement = props.postDataEl.map(p => <NewPost idPost={p.idPost} post={p.post} likesCount={p.likesCount}/>);
 
-    const changeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        const x = event.currentTarget.value;
-        props.changeHandler(x)
-    }
-    const addPost = () => {
-        props.addPost()
+    // const changeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    //     const x = event.currentTarget.value;
+    //     props.changeHandler(x)
+    // }
+    const addPost = (value : any) => {
+        props.addPost(value.postText)
     }
 
     return <div className={classes.posts}>
-        <div className={classes.textareaBlock}><
-            textarea className={classes.textarea} value={props.newPost} onChange={changeHandler}/>
-        </div>
-        <div className={classes.btnSendBlock}>
-            <input
-                className={classes.btnSend}
-                type="submit"
-                value="Add post"
-                onClick={addPost}
-            />
-        </div>
+        <PostForm onSubmit={addPost} />
         <div className={classes.title}>My posts:</div>
         <div className={classes.postsBlock}>
             {postElement}
         </div>
     </div>
 }
+
+
+const maxLength10 = maxLength(10)
+const PostForm = reduxForm({form: "addPost"})((props: InjectedFormProps) => {
+    return <form onSubmit={props.handleSubmit}>
+        <div className={classes.textareaBlock}>
+            <Field className={classes.textarea} component={Textarea} placeholder={"Post"} name={"postText"} validate={[required,maxLength10]}/>
+        </div>
+        <div className={classes.btnSendBlock}>
+            <button className={classes.btnSend}>Post</button>
+        </div>
+    </form>
+})
 

@@ -1,6 +1,10 @@
+import React from "react";
 import {AuthDataType} from "./store"
 import {Dispatch} from "redux";
 import {authAPI} from "../Api/api";
+import {Redirect} from "react-router-dom";
+import { stopSubmit } from "redux-form";
+import {Simulate} from "react-dom/test-utils";
 
 
 let initialState = {
@@ -24,7 +28,7 @@ export const authReducer = (state: AuthDataType = initialState, action: Dispatch
             return {
                 ...state,
                 ...action.data,
-                isAuth: true,
+
             }
 
 
@@ -34,10 +38,10 @@ export const authReducer = (state: AuthDataType = initialState, action: Dispatch
     }
 }
 
-export const setAuthUserData = (id: number | null, login: string | null, email: string | null) => {
+export const setAuthUserData = (id: string | null, login: string | null, email: string | null , isAuth: boolean) => {
     return {
         type: "SET_USER_DATA",
-        data: {id, login, email}
+        data: {id, login, email, isAuth}
     } as const
 };
 
@@ -46,13 +50,52 @@ export const getAuth = () => {
 
     return (dispatch: Dispatch<DispatchActionTypeAuth>) => {
 
-        authAPI.auth().then(data => {
+        return authAPI.auth().then(data => {
 
             if (data.resultCode === 0) {
                 let {id, login, email} = data.data;
-                dispatch(setAuthUserData(id, login, email))
+                dispatch(setAuthUserData(id, login, email,  true))
 
             }
+
+        })
+
+
+    }
+}
+
+
+export const login = (email: string, password: string, rememberMe: boolean) => {
+
+    return (dispatch: Dispatch<any>) => {
+
+        authAPI.login(email, password, rememberMe).then(data => {
+
+            if (data.resultCode === 0) {
+                dispatch(getAuth())
+
+            }
+            else {
+                debugger
+                dispatch(stopSubmit("login", {_error: data.messages}))
+            }
+
+        })
+
+
+    }
+}
+export const logout = () => {
+
+    return (dispatch: Dispatch<any>) => {
+
+        authAPI.logout().then(data => {
+
+            if (data.resultCode === 0) {
+                dispatch(setAuthUserData(null, null, null, false))
+
+            }
+
 
         })
 

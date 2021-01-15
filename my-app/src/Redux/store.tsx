@@ -1,5 +1,5 @@
-import {createAddPostAction, createChangeHandlerAction, setUserProfile} from "./profileReducer";
-import {createAddMessageAction, createChangeMessageHandlerAction} from "./dialogsReducer";
+import {createAddPostAction, setProfileStatus, setUserProfile} from "./profileReducer";
+import {createAddMessageAction} from "./dialogsReducer";
 
 export type DialogsDataElType = {
     dialogsId: string
@@ -51,7 +51,7 @@ export type ProfileType = {
 }
 
 export type AuthDataType = {
-    "id": number | null,
+    "id": string | null,
     "login": string | null,
     "email": string | null
     "isAuth": boolean
@@ -77,6 +77,8 @@ export type ProfilePageType = {
     postData: Array<PostDataElType>
     newPost: string;
     profile: ProfileType | null
+    profileStatus: string
+
 }
 
 export type UserPageType = {
@@ -94,14 +96,15 @@ export type StateType = {
     profilePage: ProfilePageType
     usersPage: UserPageType
     data: AuthDataType
+    app: {initialized: boolean}
 }
 
 export type DispatchActionType =
     ReturnType<typeof createAddPostAction> |
-    ReturnType<typeof createChangeHandlerAction> |
     ReturnType<typeof createAddMessageAction> |
     ReturnType<typeof setUserProfile> |
-    ReturnType<typeof createChangeMessageHandlerAction>
+    ReturnType<typeof setProfileStatus>
+    // ReturnType<typeof createChangeMessageHandlerAction>
 
 
 // export type StoreType = {

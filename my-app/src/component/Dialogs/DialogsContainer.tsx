@@ -1,5 +1,5 @@
 import React from "react";
-import {createAddMessageAction, createChangeMessageHandlerAction} from "../../Redux/dialogsReducer";
+import {createAddMessageAction} from "../../Redux/dialogsReducer";
 import {Dialogs} from "./Dialogs";
 import {connect} from "react-redux";
 import {DispatchActionType, StateType} from "../../Redux/store";
@@ -22,12 +22,12 @@ function mapDispatchProps(dispatch: (action: DispatchActionType) => void   )  {
 
     return {
 
-        onChangeMessage: (newText: string) => {
-            dispatch(createChangeMessageHandlerAction(newText))
-        },
-        addMessages: () => {
+        // onChangeMessage: (newText: string) => {
+        //     dispatch(createChangeMessageHandlerAction(newText))
+        // },
+        addMessages: (message: string) => {
 
-            dispatch(createAddMessageAction(store.getState().dialogPage.newMessage))
+            dispatch(createAddMessageAction(message))
         }
     }
 

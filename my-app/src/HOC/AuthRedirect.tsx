@@ -12,7 +12,7 @@ let mapStateToPropsRD = (state: StateType) => ({
 export const authUserHOC = (Component: Function ) =>{
 
    return connect(mapStateToPropsRD)((props: {isAuth: boolean})=>{
-        // if (!props.isAuth) return <Redirect to={"/login"}/>
+       if (!props.isAuth) return <Redirect to={"/login"}/>
         return <Component {...props} />
 
     })

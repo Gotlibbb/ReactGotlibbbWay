@@ -9,57 +9,72 @@ import {DialogsContainer} from "./component/Dialogs/DialogsContainer";
 import {UsersContainer} from "./component/Users/UsersContainer";
 import ProfileContainer from './component/Profile/ProfileContainer';
 import HeaderContainer from "./component/Header/HeaderContainer";
-import {Login} from "./component/login/Login";
+import Login from "./component/login/Login";
+import { connect } from 'react-redux';
+import {getAuth} from "./Redux/authReducer";
+import {initialize} from "./Redux/appReducer";
+import {StateType} from "./Redux/store";
+import {Preloader} from "./assets/Preloader";
 
-// import {DialogsContainer} from "./component/Dialogs/DialogsContainer";
+type AppPropsType = {
+    initialize : () => void
+    initialized : boolean
 
+}
 
-function App() {
+class App extends React.Component <AppPropsType> {
 
-    // @ts-ignore
-    return (
-        <BrowserRouter>
-            <div className='app-container'>
-                <div className={'header'}>
-                    <HeaderContainer/>
-                </div>
+    componentDidMount() {
 
-                <div className={"content-block"}>
+        this.props.initialize()
+    }
 
-                    <div className={'navbar'}>
-                        <Navbar/>
+    render() {
+        if (!this.props.initialized) return <Preloader/>
+        return (
+            <BrowserRouter>
+                <div className='app-container'>
+                    <div className={'header'}>
+                        <HeaderContainer/>
                     </div>
 
-                    <div className={"content"}>
+                    <div className={"content-block"}>
 
-                        <Route path='/profile/:userId?'
+                        <div className={'navbar'}>
+                            <Navbar/>
+                        </div>
 
-                               render={() => <ProfileContainer/>}/>
-                        <Route path='/login'
-                               render={() => <Login/>}/>
+                        <div className={"content"}>
 
-                        <Route path='/dialogs'
-                               render={() => <DialogsContainer/>}/>
+                            <Route path='/profile/:userId?'
 
-                        <Route path='/users'
+                                   render={() => <ProfileContainer/>}/>
+                            <Route path='/login'
+                                   render={() => <Login/>}/>
 
-                               render={() => <UsersContainer/>}/>
+                            <Route path='/dialogs'
+                                   render={() => <DialogsContainer/>}/>
 
-                        <Route path='/news'
-                               render={() => <News/>}/>
+                            <Route path='/users'
 
-                        <Route path='/music'
-                               render={() => <Music/>}/>
+                                   render={() => <UsersContainer/>}/>
 
-                        <Route path='/settings'
-                               render={() => <Settings/>}/>
+                            <Route path='/news'
+                                   render={() => <News/>}/>
 
+                            <Route path='/music'
+                                   render={() => <Music/>}/>
+
+                            <Route path='/settings'
+                                   render={() => <Settings/>}/>
+
+                        </div>
                     </div>
                 </div>
-            </div>
-        </BrowserRouter>
-    );
+            </BrowserRouter>
+        );
+    }
 }
 
 
-export default App;
+export default connect((state: StateType)=>{ return {initialized: state.app.initialized}}, {initialize})(App);

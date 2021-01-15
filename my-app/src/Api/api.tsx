@@ -27,9 +27,17 @@ export const authAPI = {
     follow(id: number) {
         return instance.post<AuthType>(`follow/${id}`).then(response => response.data)
     },
-    auth() {
 
+    auth() {
         return instance.get<AuthType>(`auth/me`).then(response => response.data)
+    },
+
+    login(email: string, password: string, rememberMe: boolean) {
+        return instance.post<AuthType>(`auth/login`, {email, password, rememberMe} ).then(response => response.data)
+    },
+
+    logout() {
+        return instance.delete<AuthType>(`auth/login` ).then(response => response.data)
     },
 
 
@@ -39,8 +47,12 @@ export const profileAPI = {
     getProfile(userId: string) {
         return instance.get<ProfileType>(`profile/` + userId).then(response => response.data)
     },
-    // putMyPhoto(userId: string){
-    //     return instance.put<ProfileType>(`profile/` + userId).then(response => response.data  )
-    // }
+    getProfileStatus(userId: string) {
+        return instance.get(`profile/status/` + userId).then(response => response.data)
+    },
+    updateProfileStatus(status: Object) {
+        return instance.put(`profile/status` , status ).then(response => response.data)
+    },
+
 
 }

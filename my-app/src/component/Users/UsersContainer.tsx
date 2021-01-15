@@ -122,7 +122,7 @@ let mdtp = {
     getUsers
 }
 
-export const UsersContainer =compose<Function>(connect(mapStateProps,mdtp), authUserHOC)(UsersAPIClassComponent)
+export const UsersContainer =compose<Function>(connect(mapStateProps,mdtp))(UsersAPIClassComponent)
 
 
 

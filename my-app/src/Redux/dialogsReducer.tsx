@@ -37,19 +37,18 @@ export const dialogsReducer = (state: DialogsPageType = initialState, action: Di
             return {
                 ...state,
                 messagesData: [...state.messagesData, newMessage],
-                newMessage: "",
             }
 
-        case "CHANGE-NEW-MESSAGE" :
-
-            // let copyState={...state};
-            // copyState.newMessage = action.newMessageText;
-            // return copyState ;
-
-            return {
-                ...state,
-                newMessage: action.newMessageText,
-            }
+        // case "CHANGE-NEW-MESSAGE" :
+        //
+        //     // let copyState={...state};
+        //     // copyState.newMessage = action.newMessageText;
+        //     // return copyState ;
+        //
+        //     return {
+        //         ...state,
+        //         newMessage: action.newMessageText,
+        //     }
 
         default:
             return state;
@@ -63,9 +62,9 @@ export const createAddMessageAction = (newMessageText: string) => {
         newMessageText: newMessageText,
     } as const
 };
-export const createChangeMessageHandlerAction = (newMessageText: string) => {
-    return {
-        type: "CHANGE-NEW-MESSAGE",
-        newMessageText: newMessageText,
-    } as const
-};
+// export const createChangeMessageHandlerAction = (newMessageText: string) => {
+//     return {
+//         type: "CHANGE-NEW-MESSAGE",
+//         newMessageText: newMessageText,
+//     } as const
+// };

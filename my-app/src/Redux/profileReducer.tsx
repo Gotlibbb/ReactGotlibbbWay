@@ -6,17 +6,19 @@ import {profileAPI} from "../Api/api";
 
 let initialState: ProfilePageType = {
     newPost: "",
-
     postData: [
         {idPost: v1(), post: "It`s my first post", likesCount: 5},
         {idPost: v1(), post: "I don`t have coronavirus", likesCount: 1},
         {idPost: v1(), post: "Hey, don`t go to the forbidden forest!!!", likesCount: 0},
     ],
-    profile: null
+    profile: null,
+    profileStatus: "",
+
 
 }
 
 export const profileReducer = (state: ProfilePageType = initialState, action: DispatchActionType): ProfilePageType => {
+
     switch (action.type) {
         case "ADD-POST" : {
             let newPost: PostDataElType = {
@@ -34,22 +36,11 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Di
             return {
                 ...state,
                 postData: [...state.postData, newPost],
-                newPost: ""
             }
 
 
         }
 
-
-        case "CHANGE-NEW-TEXT" :
-            // let copyState={...state};
-            // copyState.newPost = action.newText;
-            // return copyState;
-
-            return {
-                ...state,
-                newPost: action.newText
-            }
 
 
         case "SET_USER_PROFILE" :
@@ -57,6 +48,14 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Di
             return {
                 ...state,
                 profile: action.profile
+            }
+
+
+        case "SET_PROFILE_STATUS" :
+
+            return {
+                ...state,
+                profileStatus: action.profileStatus
             }
 
 
@@ -70,17 +69,10 @@ export const createAddPostAction = (post: string) => {
 
     return {
         type: "ADD-POST",
-        post: post,
+        post,
     } as const
 };
-export const createChangeHandlerAction = (newText: string) => {
 
-
-    return {
-        type: "CHANGE-NEW-TEXT",
-        newText: newText,
-    } as const
-};
 export const setUserProfile = (profile: ProfileType) => {
 
 
@@ -89,13 +81,42 @@ export const setUserProfile = (profile: ProfileType) => {
         profile,
     } as const
 };
+export const setProfileStatus = (profileStatus: string) => {
 
-export const getProfile = (userId: string = "11928") => {
+
+    return {
+        type: "SET_PROFILE_STATUS",
+        profileStatus,
+    } as const
+};
+
+
+
+export const getProfile = (userId: string) => {
 
     return (dispatch: Dispatch<DispatchActionType>) => {
 
         profileAPI.getProfile(userId).then(data => {
             dispatch(setUserProfile(data));
         })
+    }
+}
+
+export const getProfileStatus = (userId: string ) => {
+
+    return (dispatch: Dispatch<DispatchActionType>) => {
+
+        profileAPI.getProfileStatus(userId).then(data => {
+            dispatch(setProfileStatus(data));
+        })
+    }
+}
+export const updateProfileStatus = (status: Object) => {
+
+    return (dispatch: Dispatch<DispatchActionType>) => {
+
+        profileAPI.updateProfileStatus(status).then(data =>{ if(data.data.resultCode===0) {
+            dispatch(setProfileStatus(data));
+        }}).catch(er=>er)
     }
 }
