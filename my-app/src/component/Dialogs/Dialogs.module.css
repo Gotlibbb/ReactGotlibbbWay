@@ -1,36 +1,34 @@
-.Dialogs
-{
+.Dialogs {
     font-size: 20px;
-    display: grid;  grid-template-columns: 2fr 10fr;
+    display: grid;
+    grid-template-columns: 2fr 10fr;
 }
 
-.dialogsNames
-{
+.dialogsNames {
     padding: 10px;
 }
 
 
-
-.dialogsNames .active
-{
+.dialogsNames .active {
     color: darkorange;
 }
 
-.Messages
-{
+.Messages {
 
     padding: 10px;
 }
-.communicationBlock{
+
+.communicationBlock {
     padding-top: 15px;
 }
 
-.textarea{
+.textarea {
     font-size: 20px;
     height: 60px;
     width: 500px;
 }
-.btnadd{
+
+.btnadd {
     margin-top: 10px;
     /*width: 100px;*/
     font-size: 20px;

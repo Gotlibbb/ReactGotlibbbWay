@@ -1,45 +1,44 @@
 import React, {ChangeEvent} from "react";
 import classes from "./ProfileInfo.module.css"
-import { reduxForm, InjectedFormProps, Field } from "redux-form";
 
 type ProfileStatusPropsType = {
     profileStatus: string | null
-    updateProfileStatus: (status: Object| null) => void
+    updateProfileStatus: (status: Object | null) => void
 }
 
 export class ProfileStatus extends React.Component<ProfileStatusPropsType> {
 
     //local state
-    state =  {
+    state = {
         editMode: false,
         lsStatus: this.props.profileStatus
     }
 
-    componentDidUpdate (prevProps: any, prevState:any) {
+    componentDidUpdate(prevProps: any, prevState: any) {
         // this.props.updateProfileStatus({status: this.state.lsStatus})
-    if (prevProps.profileStatus!== this.props.profileStatus) {
-        this.setState({
-            lsStatus: this.props.profileStatus
-        })
-    }
+        if (prevProps.profileStatus !== this.props.profileStatus) {
+            this.setState({
+                lsStatus: this.props.profileStatus
+            })
+        }
 
     }
 
     activatedEditMode = () => {
         this.setState({
-            editMode : true
+            editMode: true
         })
     }
 
-    deActivatedEditMode = () =>  {
+    deActivatedEditMode = () => {
         this.setState({
-            editMode : false
+            editMode: false
 
         })
         this.props.updateProfileStatus({status: this.state.lsStatus})
     }
 
-    changeStatus = (e: ChangeEvent<HTMLInputElement> ) => {
+    changeStatus = (e: ChangeEvent<HTMLInputElement>) => {
         this.setState({
             lsStatus: e.currentTarget.value
         })
@@ -52,11 +51,17 @@ export class ProfileStatus extends React.Component<ProfileStatusPropsType> {
                 ?
 
 
-                <div><input className={classes.Input} onChange={this.changeStatus} autoFocus={true} onBlur={this.deActivatedEditMode} placeholder={"Fix it"} value={this.state.lsStatus === null|| this.state.lsStatus === ""? "" : this.state.lsStatus}/></div>
+                <div><input className={classes.input} onChange={this.changeStatus} autoFocus={true}
+                            onBlur={this.deActivatedEditMode} placeholder={"Fix it"}
+                            value={this.state.lsStatus === null || this.state.lsStatus === "" ? "" : this.state.lsStatus}/>
+                </div>
 
 
                 :
-                <div><span onDoubleClick={this.activatedEditMode}>{this.state.lsStatus === null|| this.state.lsStatus === ""? <div><span>The account has no status. No status at all.</span></div>: this.state.lsStatus}</span></div>
+                <div><span
+                    onDoubleClick={this.activatedEditMode}>{this.state.lsStatus === null || this.state.lsStatus === "" ?
+                    <div><span>The account has no status. No status at all.</span></div> : this.state.lsStatus}</span>
+                </div>
             }
         </div>
     }

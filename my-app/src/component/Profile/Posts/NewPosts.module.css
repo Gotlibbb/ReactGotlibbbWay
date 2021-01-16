@@ -1,5 +1,4 @@
-.userPhoto
-{
+.userPhoto {
     overflow: hidden;
 
 
@@ -10,10 +9,12 @@
 
     border-radius: 50%;
 }
+
 .newPost {
     padding-top: 15px;
 }
-.post{
+
+.post {
     font-size: 25px;
 }
 
@@ -22,18 +23,20 @@
     cursor: pointer;
     opacity: 70%;
 }
+
 .postLike:active {
     cursor: pointer;
     opacity: 100%;
 }
-.postLike{
+
+.postLike {
     opacity: 50%;
     color: red;
     padding-left: 20px;
     font-weight: bold;
 }
 
-.postLike img{
+.postLike img {
     width: 50px;
 
 }

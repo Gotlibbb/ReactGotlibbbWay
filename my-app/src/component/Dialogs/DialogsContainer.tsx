@@ -22,11 +22,7 @@ function mapDispatchProps(dispatch: (action: DispatchActionType) => void) {
 
     return {
 
-        // onChangeMessage: (newText: string) => {
-        //     dispatch(createChangeMessageHandlerAction(newText))
-        // },
         addMessages: (message: string) => {
-
             dispatch(createAddMessageAction(message))
         }
     }

@@ -96,7 +96,7 @@ export type StateType = {
     profilePage: ProfilePageType
     usersPage: UserPageType
     data: AuthDataType
-    app: {initialized: boolean}
+    app: { initialized: boolean }
 }
 
 export type DispatchActionType =
@@ -104,7 +104,7 @@ export type DispatchActionType =
     ReturnType<typeof createAddMessageAction> |
     ReturnType<typeof setUserProfile> |
     ReturnType<typeof setProfileStatus>
-    // ReturnType<typeof createChangeMessageHandlerAction>
+// ReturnType<typeof createChangeMessageHandlerAction>
 
 
 // export type StoreType = {

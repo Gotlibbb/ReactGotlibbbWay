@@ -1,16 +1,15 @@
-.user{
+.user {
     text-align: center;
     font-size: 30px;
     padding-left: 15px;
 }
 
-.user .userAva
-{
+.user .userAva {
     width: 50vh;
     border-radius: 50%;
     background-color: white;
 }
 
-.Input {
+.input {
     font-size: 20px;
 }

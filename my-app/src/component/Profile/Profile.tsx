@@ -13,21 +13,20 @@ type ProfilePropsType = {
 }
 
 
+export function Profile(props: ProfilePropsType) {
 
-    export function Profile(props: ProfilePropsType) {
+    return <div className={classes.content}>
+        <img className={classes.photoFone} src={myImage} alt={"myImage"}/>
 
-        return <div className={classes.content}>
-            <img className={classes.photoFone} src={myImage} alt={"myImage"}/>
-
-            <div className={classes.profCont}>
-                <ProfileInfo profile={props.profile} profileStatus={props.profileStatus}
-                             updateProfileStatus={props.updateProfileStatus}/>
-                <ContainerPosts/>
-
-            </div>
+        <div className={classes.profCont}>
+            <ProfileInfo profile={props.profile} profileStatus={props.profileStatus}
+                         updateProfileStatus={props.updateProfileStatus}/>
+            <ContainerPosts/>
 
         </div>
-    }
+
+    </div>
+}
 
 
 

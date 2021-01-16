@@ -1,12 +1,14 @@
 
-.content{
+.content {
     display: flex;
     flex-direction: column;
 }
-.photoFone{
-    width:100%;
+
+.photoFone {
+    width: 100%;
 }
-.profCont{
+
+.profCont {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;

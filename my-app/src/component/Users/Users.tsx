@@ -14,7 +14,7 @@ type UsersPropsType = {
     isFinished: number[]
     getUnFollow: (userId: number) => void
     getFollow: (userId: number) => void
-    isFetching:boolean
+    isFetching: boolean
 
 
 }
@@ -45,11 +45,11 @@ export function Users(props: UsersPropsType) {
             (u => <div key={u.id} className={u.followed ? styles.userFollow : styles.user}>
 
                     <NavLink to={'/profile/' + u.id}>
-                    <div>{u.name}</div>
+                        <div>{u.name}</div>
 
                         <img src={u.photos.small != null ? u.photos.small : no_ava}
-                             // style={u.photos.small === null ? {"opacity": "30%"} : {"opacity": "100%"}}
-                              alt={""}/>
+                            // style={u.photos.small === null ? {"opacity": "30%"} : {"opacity": "100%"}}
+                             alt={""}/>
                     </NavLink>
                     <div>
                         {u.followed ?

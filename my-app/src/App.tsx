@@ -10,15 +10,14 @@ import {UsersContainer} from "./component/Users/UsersContainer";
 import ProfileContainer from './component/Profile/ProfileContainer';
 import HeaderContainer from "./component/Header/HeaderContainer";
 import Login from "./component/login/Login";
-import { connect } from 'react-redux';
-import {getAuth} from "./Redux/authReducer";
+import {connect} from 'react-redux';
 import {initialize} from "./Redux/appReducer";
 import {StateType} from "./Redux/store";
 import {Preloader} from "./assets/Preloader";
 
 type AppPropsType = {
-    initialize : () => void
-    initialized : boolean
+    initialize: () => void
+    initialized: boolean
 
 }
 
@@ -49,6 +48,7 @@ class App extends React.Component <AppPropsType> {
                             <Route path='/profile/:userId?'
 
                                    render={() => <ProfileContainer/>}/>
+
                             <Route path='/login'
                                    render={() => <Login/>}/>
 
@@ -77,4 +77,6 @@ class App extends React.Component <AppPropsType> {
 }
 
 
-export default connect((state: StateType)=>{ return {initialized: state.app.initialized}}, {initialize})(App);
+export default connect((state: StateType) => {
+    return {initialized: state.app.initialized}
+}, {initialize})(App);

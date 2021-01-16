@@ -1,6 +1,6 @@
 import React from "react";
 import {Dispatch} from "redux";
-import { getAuth } from "./authReducer";
+import {getAuth} from "./authReducer";
 
 type initialStateType = {
     initialized: boolean
@@ -16,7 +16,6 @@ export type DispatchActionTypeApp =
     | ReturnType<typeof setInitialized>
 
     ;
-
 
 
 export const appReducer = (state: initialStateType = initialState, action: DispatchActionTypeApp): initialStateType => {
@@ -44,14 +43,12 @@ export const setInitialized = () => {
 };
 
 
-
-
 export const initialize = () => {
 
     return (dispatch: Dispatch<any>) => {
-let promise = dispatch(getAuth())
+        let promise = dispatch(getAuth())
 
-        Promise.all([promise]).then(()=>{
+        Promise.all([promise]).then(() => {
             dispatch(setInitialized())
         })
 

@@ -2,9 +2,7 @@ import React from "react";
 import {AuthDataType} from "./store"
 import {Dispatch} from "redux";
 import {authAPI} from "../Api/api";
-import {Redirect} from "react-router-dom";
-import { stopSubmit } from "redux-form";
-import {Simulate} from "react-dom/test-utils";
+import {stopSubmit} from "redux-form";
 
 
 let initialState = {
@@ -38,7 +36,7 @@ export const authReducer = (state: AuthDataType = initialState, action: Dispatch
     }
 }
 
-export const setAuthUserData = (id: string | null, login: string | null, email: string | null , isAuth: boolean) => {
+export const setAuthUserData = (id: string | null, login: string | null, email: string | null, isAuth: boolean) => {
     return {
         type: "SET_USER_DATA",
         data: {id, login, email, isAuth}
@@ -54,7 +52,7 @@ export const getAuth = () => {
 
             if (data.resultCode === 0) {
                 let {id, login, email} = data.data;
-                dispatch(setAuthUserData(id, login, email,  true))
+                dispatch(setAuthUserData(id, login, email, true))
 
             }
 
@@ -74,8 +72,7 @@ export const login = (email: string, password: string, rememberMe: boolean) => {
             if (data.resultCode === 0) {
                 dispatch(getAuth())
 
-            }
-            else {
+            } else {
                 debugger
                 dispatch(stopSubmit("login", {_error: data.messages}))
             }

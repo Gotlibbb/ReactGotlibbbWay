@@ -15,13 +15,15 @@
 }
 
 .btnSend {
-background-color: white;
+    background-color: white;
     font-size: 25px;
 }
+
 .btnSend:hover {
     background-color: black;
     color: white;
 }
+
 .btnSend:active {
 
     background-color: white;

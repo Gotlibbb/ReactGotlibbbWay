@@ -4,12 +4,13 @@
     justify-content: space-between;
 
 }
+
 .header img {
-    width:65px;
+    width: 65px;
 
 }
 
-.login{
+.login {
     margin: 15px 15px;
 }
 

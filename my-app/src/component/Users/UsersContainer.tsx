@@ -45,7 +45,7 @@ class UsersAPIClassComponent extends React.Component <UsersContainerPropsType, U
 
 
     render() {
-
+        console.log("render")
 
         let pageCount: number | undefined = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
 
@@ -94,42 +94,7 @@ function mapStateProps(state: StateType) {
 
 }
 
-// function mapDispatchProps(dispatch: (action: DispatchActionTypeUsers) => void) {
-//
-//     return {
-//         setCurrentPage: (currentPage: number) => {
-//             dispatch(setCurrentPageAC(currentPage))
-//         },
-//         follow: (userID: number) => {
-//
-//             dispatch(createFollowAction(userID))
-//         },
-//         unfollow: (userID: number) => {
-//
-//             dispatch(createUnFollowAction(userID))
-//         },
-//         setUsers: (items: UserElType[]) => {
-//             dispatch(createSetUsersAction(items))
-//         },
-//         setTotalCount: (totalUsersCount: number) => {
-//             dispatch(setTotalCountAC(totalUsersCount))
-//         },
-//         setIsFetching: (isFetching: boolean) => {
-//             dispatch(setIsFetchingAC(isFetching))
-//         },
-//     }
-//
-// }
-let mdtp = {
-    setCurrentPage,
-    setIsFetching,
-
-    getUnFollow,
-    getFollow,
-    getUsers
-}
-
-export const UsersContainer = compose<Function>(connect(mapStateProps, mdtp))(UsersAPIClassComponent)
+export const UsersContainer = compose<Function>(connect(mapStateProps, {setCurrentPage, setIsFetching, getUnFollow, getFollow, getUsers}))(UsersAPIClassComponent)
 
 
 
