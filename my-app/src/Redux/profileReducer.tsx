@@ -109,7 +109,7 @@ export const getProfileStatus = (userId: string) => {
         })
     }
 }
-export const updateProfileStatus = (status: Object) => {
+export const updateProfileStatusTC = (status: Object) => {
 
     return (dispatch: Dispatch<DispatchActionType>) => {
 

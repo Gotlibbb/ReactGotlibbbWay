@@ -4,6 +4,7 @@ import classes from "./ProfileInfo.module.css"
 import {Preloader} from "../../../assets/Preloader";
 import {ProfileType} from "../../../Redux/store";
 import {ProfileStatus} from "./ProfileStatus";
+import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
 
 type ProfileInfoPropsType = {
     profile: ProfileType | null
@@ -25,7 +26,7 @@ export function ProfileInfo(props: ProfileInfoPropsType) {
             <h2>{props.profile.fullName}</h2>
             <img className={classes.userAva} src={imgAny} alt={""}/>
             <div>
-                <ProfileStatus profileStatus={props.profileStatus} updateProfileStatus={props.updateProfileStatus}/>
+                <ProfileStatusWithHooks profileStatus={props.profileStatus} updateProfileStatus={props.updateProfileStatus}/>
             </div>
             <div>{props.profile.aboutMe}</div>
             <div>{props.profile.lookingForAJob}</div>
