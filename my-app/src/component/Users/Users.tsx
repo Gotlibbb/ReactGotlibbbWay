@@ -4,6 +4,7 @@ import no_ava from '../../images/no_ava.png'
 import styles from "./users.module.css";
 import {NavLink} from "react-router-dom";
 import {Preloader} from "../../assets/Preloader";
+import {Pagination} from "./Pagination";
 
 type UsersPropsType = {
     usersPage: UserElType[]
@@ -21,26 +22,15 @@ type UsersPropsType = {
 
 export function Users(props: UsersPropsType) {
 
-    let pageCount: number | undefined = Math.ceil(props.totalUsersCount / props.pageSize);
-
-    let pages = [];
-
-    for (let i = 1; i <= pageCount; i++) {
-        pages.push(i)
-    }
-
     return <div className={styles.usersPage}>
-        <div className={styles.pageS}>
-            {pages.map(p => {
-                return <span onClick={() => {
-                    props.onPageChanged(p)
-                }} className={props.currentPage === p && styles.selectedPage || styles.page}>{p}</span>
 
-
-            })}
-        </div>
-        <div>{props.isFetching && <Preloader/>}</div>
-        <div className={styles.usersBlock}>
+        <Pagination totalUsersCount={props.totalUsersCount}
+                    currentPage={props.currentPage}
+                    onPageChanged={props.onPageChanged}
+                    pageSize={props.pageSize}
+        />
+        {props.isFetching && <Preloader/>}
+        {!props.isFetching&&<div className={styles.usersBlock}>
             {props.usersPage.map
             (u => <div key={u.id} className={u.followed ? styles.userFollow : styles.user}>
 
@@ -63,8 +53,7 @@ export function Users(props: UsersPropsType) {
                     </div>
                 </div>
             )}
-        </div>
+        </div>}
     </div>
 }
-
 

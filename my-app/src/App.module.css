@@ -1,17 +1,17 @@
-.app-container {
+.appContainer {
     display: flex;
     flex-direction: column;
 
 }
 
-.content-block {
+.contentBlock {
     display: flex;
     border: 1px solid;
 }
 
 .content {
     width: 88%;
-    background-color: cyan;
+    background-color: #00ffff;
     border: 1px solid;
 }
 

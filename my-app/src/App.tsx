@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import style from './App.module.css';
 import {Navbar} from "./component/Navbar/Navbar";
 import {BrowserRouter, Route} from 'react-router-dom';
 import {News} from "./component/News/News";
@@ -12,8 +12,8 @@ import HeaderContainer from "./component/Header/HeaderContainer";
 import Login from "./component/login/Login";
 import {connect} from 'react-redux';
 import {initialize} from "./Redux/appReducer";
-import {StateType} from "./Redux/store";
 import {Preloader} from "./assets/Preloader";
+import { StateType } from "./Redux/store";
 
 type AppPropsType = {
     initialize: () => void
@@ -32,21 +32,21 @@ class App extends React.Component <AppPropsType> {
         if (!this.props.initialized) return <Preloader/>
         return (
             <BrowserRouter>
-                <div className='app-container'>
-                    <div className={'header'}>
+                <div className={style.appContainer}>
+                    <div className={style.header}>
                         <HeaderContainer/>
                     </div>
 
-                    <div className={"content-block"}>
+                    <div className={style.contentBlock}>
 
-                        <div className={'navbar'}>
+                        <div className={style.navbar}>
                             <Navbar/>
                         </div>
 
-                        <div className={"content"}>
+                        <div className={style.content}>
 
                             <Route path='/profile/:userId?'
-
+us
                                    render={() => <ProfileContainer/>}/>
 
                             <Route path='/login'

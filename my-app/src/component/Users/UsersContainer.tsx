@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Users} from "./Users";
-import {getFollow, getUnFollow, getUsers, setCurrentPage, setIsFetching,} from "../../Redux/usersReducer";
+import {getFollow, getUnFollow, getUsers, setCurrentPage, } from "../../Redux/usersReducer";
 import {StateType, UserElType} from "../../Redux/store";
 import {compose} from "redux";
 import {
@@ -94,7 +94,7 @@ function mapStateProps(state: StateType) {
 
 }
 
-export const UsersContainer = compose<Function>(connect(mapStateProps, {setCurrentPage, setIsFetching, getUnFollow, getFollow, getUsers}))(UsersAPIClassComponent)
+export const UsersContainer = compose<Function>(connect(mapStateProps, {setCurrentPage,  getUnFollow, getFollow, getUsers}))(UsersAPIClassComponent)
 
 
 

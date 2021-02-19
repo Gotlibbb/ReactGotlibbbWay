@@ -73,7 +73,7 @@ export const login = (email: string, password: string, rememberMe: boolean) => {
                 dispatch(getAuth())
 
             } else {
-                debugger
+
                 dispatch(stopSubmit("login", {_error: data.messages}))
             }
 
