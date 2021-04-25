@@ -3,8 +3,7 @@ import React from "react";
 import classes from "./ProfileInfo.module.css"
 import {Preloader} from "../../../assets/Preloader";
 import {ProfileType} from "../../../Redux/store";
-import {ProfileStatus} from "./ProfileStatus";
-import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 type ProfileInfoPropsType = {
     profile: ProfileType | null
@@ -12,7 +11,7 @@ type ProfileInfoPropsType = {
     updateProfileStatus: (status: Object | null) => void
 }
 
-export function ProfileInfo(props: ProfileInfoPropsType) {
+function ProfileInfo(props: ProfileInfoPropsType) {
 
     if (!props.profile) {
         return <Preloader/>
@@ -24,7 +23,7 @@ export function ProfileInfo(props: ProfileInfoPropsType) {
 
         <div className={classes.user}>
             <h2>{props.profile.fullName}</h2>
-            <img className={classes.userAva} src={imgAny} alt={""}/>
+            <img className={classes.userAva} src={imgAny} alt={"imgAny"}/>
             <div>
                 <ProfileStatusWithHooks profileStatus={props.profileStatus} updateProfileStatus={props.updateProfileStatus}/>
             </div>
@@ -34,3 +33,5 @@ export function ProfileInfo(props: ProfileInfoPropsType) {
         </div>
     </div>
 }
+
+export default React.memo(ProfileInfo)

@@ -1,29 +1,35 @@
 .header {
-    background-color: greenyellow;
+    background-color: #576b38;
     display: flex;
     justify-content: space-between;
-
+    height: 35px;
 }
 
 .header img {
-    width: 65px;
+    padding-left: 5px;
+    width: 35px;
+    height: 35px;
 
 }
 
-.login {
-    margin: 15px 15px;
+.login{
+    display: flex;
+}
+
+
+.login button {
+    padding: 5px;
+    margin-right: 5px;
+    font-size: 18px;
+    font-weight: bold;
+
 }
 
 .name {
-    color: blue;
-    margin: 15px 15px;
-    font-size: 28px;
+    color: #ccccef;
+    margin-right: 15px;
+    font-size: 20px;
     font-weight: bold;
 }
 
-.login a {
-    color: #333333;
-    font-size: 28px;
-    font-weight: bolder;
-    text-decoration: none;
-}
+

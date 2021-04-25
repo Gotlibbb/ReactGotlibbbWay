@@ -1,14 +1,11 @@
 import React, {ChangeEvent, useEffect, useState} from "react";
 import classes from "./ProfileInfo.module.css"
-import { useDispatch } from "react-redux";
-import {updateProfileStatusTC} from "../../../Redux/profileReducer";
 
 type ProfileStatusPropsType = {
     profileStatus: string | null
     updateProfileStatus: (status: Object | null) => void
 }
-
-export const ProfileStatusWithHooks = (props: ProfileStatusPropsType) => {
+ const ProfileStatusWithHooks = (props: ProfileStatusPropsType) => {
 
 
     let [editMode, setEditMode] = useState<boolean>(false)
@@ -49,7 +46,7 @@ export const ProfileStatusWithHooks = (props: ProfileStatusPropsType) => {
 
 
             :
-            <div><span
+            <div className={classes.status} > <span
                 onDoubleClick={() => setEditMode(true)}>
                     {lsStatus === null || lsStatus === "" ?
                         <div><span>The account has no status. No status at all.</span></div> : lsStatus}</span>
@@ -57,3 +54,5 @@ export const ProfileStatusWithHooks = (props: ProfileStatusPropsType) => {
         }
     </div>
 }
+
+export default React.memo(ProfileStatusWithHooks)

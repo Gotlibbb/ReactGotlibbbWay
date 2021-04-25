@@ -6,6 +6,8 @@ type PropsDialogsMessageType = {
     messageId: string
 }
 
-export function DialogsMessage(props: PropsDialogsMessageType) {
+function DialogsMessage(props: PropsDialogsMessageType) {
     return <div className={classes.message}>{props.message}</div>
 }
+
+export default React.memo(DialogsMessage)

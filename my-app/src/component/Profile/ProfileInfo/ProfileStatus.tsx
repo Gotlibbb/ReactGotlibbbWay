@@ -6,7 +6,7 @@ type ProfileStatusPropsType = {
     updateProfileStatus: (status: Object | null) => void
 }
 
-export class ProfileStatus extends React.Component<ProfileStatusPropsType> {
+export class ProfileStatus extends React.PureComponent<ProfileStatusPropsType> {
 
     //local state
     state = {

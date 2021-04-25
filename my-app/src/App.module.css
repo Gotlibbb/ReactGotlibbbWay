@@ -10,17 +10,17 @@
 }
 
 .content {
-    width: 88%;
-    background-color: #00ffff;
+    width: 90%;
+    background-color: #cff1ef;
     border: 1px solid;
 }
 
 
 .navbar {
     min-width: 110px;
-    width: 12%;
+    width: 10%;
     border: 1px solid;
-    background-color: darkorange;
+    background-color: #80592f;
 }
 
 .header {

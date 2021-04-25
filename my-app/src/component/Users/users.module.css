@@ -116,7 +116,7 @@
 
 .usersBlock {
 
-    max-height: 100vh;
+    max-height: 120vh;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;

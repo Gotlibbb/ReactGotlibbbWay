@@ -29,7 +29,7 @@ type UsersContainerPropsType = {
 }
 
 
-class UsersAPIClassComponent extends React.Component <UsersContainerPropsType, UserElType> {
+class UsersAPIClassComponent extends React.PureComponent <UsersContainerPropsType, UserElType> {
 
     componentDidMount() {
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
@@ -60,17 +60,8 @@ class UsersAPIClassComponent extends React.Component <UsersContainerPropsType, U
         return <>
 
             <Users
-                totalUsersCount={this.props.totalUsersCount}
-                currentPage={this.props.currentPage}
-                pageSize={this.props.pageSize}
-                usersPage={this.props.usersPage}
                 onPageChanged={this.onPageChanged}
-                isFinished={this.props.isFinished}
-                getUnFollow={this.props.getUnFollow}
-                getFollow={this.props.getFollow}
-                isFetching={this.props.isFetching}
-
-
+                {...this.props}
             />
 
         </>
@@ -94,7 +85,7 @@ function mapStateProps(state: StateType) {
 
 }
 
-export const UsersContainer = compose<Function>(connect(mapStateProps, {setCurrentPage,  getUnFollow, getFollow, getUsers}))(UsersAPIClassComponent)
+export const UsersContainer = compose<Function>(connect(mapStateProps, {setCurrentPage,  getUnFollow, getFollow, getUsers}), React.memo)(UsersAPIClassComponent)
 
 
 

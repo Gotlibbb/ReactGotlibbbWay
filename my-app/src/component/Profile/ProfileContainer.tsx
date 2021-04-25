@@ -1,6 +1,6 @@
 import React from "react";
 import {ProfileType, StateType} from "../../Redux/store";
-import {Profile} from "./Profile";
+import Profile from "./Profile";
 import {connect} from "react-redux";
 import {getProfile, getProfileStatus, updateProfileStatusTC} from "../../Redux/profileReducer";
 import {RouteComponentProps, withRouter} from "react-router-dom";
@@ -49,5 +49,6 @@ let mapStateToProps = (state: StateType) => ({
     authId: getAuthIdSelector(state),
 })
 
-export default compose<Function>(connect(mapStateToProps, {getProfile, getProfileStatus, updateProfileStatus: updateProfileStatusTC}), authUserHOC, withRouter)(ProfileContainer)
+export default compose<Function>(connect( mapStateToProps, {getProfile, getProfileStatus, updateProfileStatus: updateProfileStatusTC}),
+    React.memo, authUserHOC, withRouter)(ProfileContainer)
 

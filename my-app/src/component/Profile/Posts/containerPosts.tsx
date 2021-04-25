@@ -1,8 +1,9 @@
-import React from "react";
 import {createAddPostAction} from "../../../Redux/profileReducer";
-import {Posts} from "./Posts";
+import Posts from "./Posts";
 import {connect} from "react-redux";
 import {DispatchActionType, StateType} from "../../../Redux/store";
+import React from "react";
+import {compose} from "redux";
 
 
 function mapStateProps(state: StateType) {
@@ -27,4 +28,4 @@ function mapDispatchProps(dispatch: (action: DispatchActionType) => void) {
 }
 
 
-export const ContainerPosts = connect(mapStateProps, mapDispatchProps)(Posts);
+export const ContainerPosts = compose<Function>(connect(mapStateProps, mapDispatchProps),React.memo)(Posts);

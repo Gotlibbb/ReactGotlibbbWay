@@ -1,4 +1,3 @@
-import React from "react";
 import {Dispatch} from "redux";
 import {getAuth} from "./authReducer";
 
@@ -36,22 +35,13 @@ export const appReducer = (state: initialStateType = initialState, action: Dispa
     }
 }
 
-export const setInitialized = () => {
-    return {
-        type: "INITIALIZED_SUCCEED",
-    }
-};
+export const setInitialized = () => ({type: "INITIALIZED_SUCCEED"} as const);
 
 
 export const initialize = () => {
 
-    return (dispatch: Dispatch<any>) => {
-        let promise = dispatch(getAuth())
-
-        Promise.all([promise]).then(() => {
-            dispatch(setInitialized())
-        })
-
+    return async (dispatch: Dispatch<any>) => {
+        await dispatch(getAuth())
+        await dispatch(setInitialized())
     }
-
 };

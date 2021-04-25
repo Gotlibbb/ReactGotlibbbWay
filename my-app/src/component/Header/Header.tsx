@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./Header.module.css"
-import {NavLink} from "react-router-dom";
+import {useHistory} from "react-router-dom";
+import logo from "../../images/logo192.png"
 
 type HeaderPropsType = {
     auth: boolean
@@ -8,20 +9,25 @@ type HeaderPropsType = {
     logout: () => void
 }
 
-export function Header(props: HeaderPropsType) {
+function Header(props: HeaderPropsType) {
+    let history = useHistory()
     return <header className={classes.header}>
         <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Logo_TV_2015.svg/1200px-Logo_TV_2015.svg.png"
-            alt=""/>
-        {props.auth ?
+            src={logo}
+            alt="logo"/>
+        <span className={classes.name}>{props.login||"Please login"}</span>
+        {props.auth &&
             <div className={classes.login}>
-                <span className={classes.name}>{props.login}</span>
-                <NavLink to={"/login"}>
-                    <button onClick={props.logout}>Log out</button>
-                </NavLink>
+                    <button onClick={() => {
+                        props.logout()
+                        history.push('login')
+                    }}>Log out
+                    </button>
 
-            </div> :
-            <div className={classes.login}><NavLink to={"/login"}>Login</NavLink></div>
+            </div>
+
         }
     </header>
 }
+
+export default React.memo(Header)

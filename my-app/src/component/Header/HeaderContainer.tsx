@@ -1,9 +1,10 @@
 import React from "react";
 import {connect} from "react-redux";
 import {AuthDataType, AuthType} from "../../Redux/store";
-import {Header} from "./Header";
+import Header from "./Header";
 import {logout} from "../../Redux/authReducer";
 import {getAuthSelector, getLoginSelector} from "./header-selector";
+import { compose } from "redux";
 
 
 type HeaderContainerPropsType = {
@@ -42,7 +43,7 @@ function mapStateProps(state: AuthType) {
 }
 
 
-export default connect(mapStateProps, {logout})(HeaderContainer);
+export default compose<Function>(connect(mapStateProps, {logout}), React.memo)(HeaderContainer);
 
 
 

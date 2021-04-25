@@ -1,4 +1,4 @@
-import {createAddPostAction, setProfileStatus, setUserProfile} from "./profileReducer";
+import {createAddPostAction, deletePost, setProfileStatus, setUserProfile} from "./profileReducer";
 import {createAddMessageAction} from "./dialogsReducer";
 
 export type DialogsDataElType = {
@@ -103,6 +103,7 @@ export type DispatchActionType =
     ReturnType<typeof createAddPostAction> |
     ReturnType<typeof createAddMessageAction> |
     ReturnType<typeof setUserProfile> |
+    ReturnType<typeof deletePost> |
     ReturnType<typeof setProfileStatus>
 // ReturnType<typeof createChangeMessageHandlerAction>
 

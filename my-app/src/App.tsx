@@ -14,6 +14,7 @@ import {connect} from 'react-redux';
 import {initialize} from "./Redux/appReducer";
 import {Preloader} from "./assets/Preloader";
 import { StateType } from "./Redux/store";
+import {compose} from "redux";
 
 type AppPropsType = {
     initialize: () => void
@@ -47,7 +48,7 @@ class App extends React.Component <AppPropsType> {
 
                             <Route path='/profile/:userId?'
 us
-                                   render={() => <ProfileContainer/>}/>
+                                   render={() => <ProfileContainer />}/>
 
                             <Route path='/login'
                                    render={() => <Login/>}/>
@@ -77,6 +78,6 @@ us
 }
 
 
-export default connect((state: StateType) => {
+export default compose<Function>(connect((state: StateType) => {
     return {initialized: state.app.initialized}
-}, {initialize})(App);
+}, {initialize}), React.memo)(App);

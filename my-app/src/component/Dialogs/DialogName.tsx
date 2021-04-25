@@ -7,6 +7,8 @@ type PropsDialogsNameType = {
     name: string
 }
 
-export function DialogName(props: PropsDialogsNameType) {
+function DialogName(props: PropsDialogsNameType) {
     return <div className={classes.name}><NavLink to={"/Dialogs/" + props.dialogsId}>{props.name}</NavLink></div>
 }
+
+export default React.memo(DialogName)

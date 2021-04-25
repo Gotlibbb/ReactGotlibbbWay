@@ -36,66 +36,41 @@ export const authReducer = (state: AuthDataType = initialState, action: Dispatch
     }
 }
 
-export const setAuthUserData = (id: string | null, login: string | null, email: string | null, isAuth: boolean) => {
-    return {
-        type: "SET_USER_DATA",
-        data: {id, login, email, isAuth}
-    } as const
-};
+export const setAuthUserData = (id: string | null, login: string | null, email: string | null, isAuth: boolean) =>
+    ({type: "SET_USER_DATA", data: {id, login, email, isAuth}} as const);
 
 
 export const getAuth = () => {
 
-    return (dispatch: Dispatch<DispatchActionTypeAuth>) => {
-
-        return authAPI.auth().then(data => {
-
-            if (data.resultCode === 0) {
-                let {id, login, email} = data.data;
-                dispatch(setAuthUserData(id, login, email, true))
-
-            }
-
-        })
-
-
+    return async (dispatch: Dispatch<DispatchActionTypeAuth>) => {
+        let data = await authAPI.auth()
+        if (data.resultCode === 0) {
+            let {id, login, email} = data.data;
+            dispatch(setAuthUserData(id, login, email, true))
+        }
     }
 }
 
 
 export const login = (email: string, password: string, rememberMe: boolean) => {
 
-    return (dispatch: Dispatch<any>) => {
-
-        authAPI.login(email, password, rememberMe).then(data => {
-
-            if (data.resultCode === 0) {
-                dispatch(getAuth())
-
-            } else {
-
-                dispatch(stopSubmit("login", {_error: data.messages}))
-            }
-
-        })
-
+    return async (dispatch: Dispatch<any>) => {
+        let data = await authAPI.login(email, password, rememberMe)
+        if (data.resultCode === 0) {
+            dispatch(getAuth())
+        } else {
+            dispatch(stopSubmit("login", {_error: data.messages}))
+        }
 
     }
 }
 export const logout = () => {
 
-    return (dispatch: Dispatch<any>) => {
-
-        authAPI.logout().then(data => {
-
-            if (data.resultCode === 0) {
-                dispatch(setAuthUserData(null, null, null, false))
-
-            }
-
-
-        })
-
+    return async (dispatch: Dispatch<DispatchActionTypeAuth>) => {
+        let data = await authAPI.logout()
+        if (data.resultCode === 0) {
+            dispatch(setAuthUserData(null, null, null, false))
+        }
 
     }
 }

@@ -8,7 +8,7 @@ type PaginationPropsType = {
     currentPage: number
 }
 
-export const Pagination = (props: PaginationPropsType) => {
+const Pagination = (props: PaginationPropsType) => {
     let [inputPage, setInputPage] = useState<string>(" ")
     let pageCount: number | undefined = Math.ceil(props.totalUsersCount / props.pageSize);
 
@@ -26,7 +26,7 @@ export const Pagination = (props: PaginationPropsType) => {
 
 
             <div className={styles.pageSwitch}>
-                {props.currentPage != 1 && <button onClick={() => {
+                {props.currentPage !== 1 && <button onClick={() => {
                     props.onPageChanged(pages[props.currentPage - 1])
                     setInputPage(" ")
                 }}>⇐...prev page </button>}
@@ -73,3 +73,5 @@ export const Pagination = (props: PaginationPropsType) => {
     </div>
 
 }
+
+export default React.memo(Pagination)

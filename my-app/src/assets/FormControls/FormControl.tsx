@@ -45,3 +45,4 @@ export const Textarea = (props) => {
 export const Input = (props) => {
     return <FormControl {...props} el={"input"}/>
 }
+

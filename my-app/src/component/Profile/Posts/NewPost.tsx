@@ -9,7 +9,7 @@ type PostPropsType = {
     likesCount: number
 }
 
-export function NewPost(props: PostPropsType) {
+function NewPost(props: PostPropsType) {
 
     return <div>
         <div className={classes.newPost}>
@@ -22,3 +22,5 @@ export function NewPost(props: PostPropsType) {
         </div>
     </div>
 }
+
+export default React.memo(NewPost)

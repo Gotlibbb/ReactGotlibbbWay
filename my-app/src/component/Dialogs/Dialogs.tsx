@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./Dialogs.module.css";
-import {DialogName} from "./DialogName";
-import {DialogsMessage} from "./DialogsMessages";
+import DialogName from "./DialogName";
+import DialogsMessage from "./DialogsMessages";
 import {DialogsDataElType, MessagesDataElType} from "../../Redux/store";
 import {Redirect} from "react-router-dom";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
@@ -11,7 +11,7 @@ import {maxLength, required} from "../../utils/validators/validators";
 type DialogsPageTypeProps = {
     dialogsData: Array<DialogsDataElType>
     messagesData: Array<MessagesDataElType>
-    addMessages: (messsage: string) => void
+    addMessages: (message: string) => void
     newMessage: string
     isAuth: boolean
 }
@@ -19,9 +19,9 @@ type DialogsPageTypeProps = {
 
 export function Dialogs(props: DialogsPageTypeProps) {
 
-    let dialogsElement = props.dialogsData.map(d => <DialogName dialogsId={d.dialogsId} name={d.name}/>)
-    let messagesElement = props.messagesData.map(m => <DialogsMessage messageId={m.messageId}
-                                                                      message={m.message}/>)
+    let dialogsElement = props.dialogsData.map((d, index) => <DialogName dialogsId={d.dialogsId} name={d.name} key={index}/>)
+    let messagesElement = props.messagesData.map((m,index) => <DialogsMessage messageId={m.messageId}
+                                                                      message={m.message} key={index}/>)
 
     const addMessages = (value: any) => {
 
