@@ -2,14 +2,17 @@
 .content {
     display: flex;
     flex-direction: column;
+
 }
 
 .photoFone {
     width: 100%;
+
 }
 
 .profCont {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
+
 }

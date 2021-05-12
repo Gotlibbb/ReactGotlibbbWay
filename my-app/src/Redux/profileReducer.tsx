@@ -49,6 +49,12 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Di
                 profileStatus: action.profileStatus
             }
 
+        case "SET_PHOTO_PROFILE" :
+
+            return {
+                ...state, profile: state.profile ? {...state.profile , photos: action.photoProfile} : null
+            }
+
         case "DELETE_POST" :
 
             return {
@@ -64,13 +70,13 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Di
 
 export const createAddPostAction = (post: string) => ({type: "ADD-POST", post} as const);
 
-export const setUserProfile = (profile: ProfileType) => ({type: "SET_USER_PROFILE", profile} as const);
+export const setUserProfile = (profile: ProfileType | null) => ({type: "SET_USER_PROFILE", profile} as const);
 
 export const setProfileStatus = (profileStatus: string) => ({type: "SET_PROFILE_STATUS", profileStatus} as const);
 
+export const setPhotoProfile = (photoProfile: any) => ({type: "SET_PHOTO_PROFILE", photoProfile} as const);
+
 export const deletePost = (postId: string) => ({type: "DELETE_POST", postId} as const)
-
-
 
 
 export const getProfile = (userId: string) => {
@@ -95,6 +101,16 @@ export const updateProfileStatusTC = (status: Object) => {
         let data = await profileAPI.updateProfileStatus(status)
         if (data.data.resultCode === 0) {
             dispatch(setProfileStatus(data));
+        }
+    }
+}
+export const savePhotoProfile = (photoProfile: File) => {
+
+    return async (dispatch: Dispatch<DispatchActionType>) => {
+        let data = await profileAPI.putPhotoProfile(photoProfile)
+        if (data.data.resultCode === 0) {
+            console.log(data.data.data)
+            dispatch(setPhotoProfile(data.data.data.photos));
         }
     }
 }

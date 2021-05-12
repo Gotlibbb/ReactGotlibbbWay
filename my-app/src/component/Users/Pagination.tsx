@@ -66,7 +66,7 @@ const Pagination = (props: PaginationPropsType) => {
         {props.currentPage === 0 && pages.map(p => {
             return <span onClick={() => {
                 props.onPageChanged(p)
-            }} className={props.currentPage === p && styles.selectedPage || styles.page}>{p}</span>
+            }} className={props.currentPage === p ? styles.selectedPage : styles.page}>{p}</span>
 
 
         })}

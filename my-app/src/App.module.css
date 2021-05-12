@@ -1,3 +1,7 @@
+::-webkit-scrollbar {
+  width: 0;
+}
+
 .appContainer {
     display: flex;
     flex-direction: column;

@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     font-size: 25px;
+    padding-right: 70px;
+
 }
 
 .title {
@@ -27,6 +29,7 @@
 }
 
 .textareaBlock {
+    margin-top: 50px;
     text-align: center;
     padding-top: 50px;
     width: 100%;

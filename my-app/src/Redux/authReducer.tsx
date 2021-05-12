@@ -1,4 +1,3 @@
-import React from "react";
 import {AuthDataType} from "./store"
 import {Dispatch} from "redux";
 import {authAPI} from "../Api/api";

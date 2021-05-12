@@ -20,7 +20,7 @@ export function User( {user, ...props}: UserPropsType) {
                     <NavLink to={'/profile/' + user.id}>
                         <div>{user.name}</div>
 
-                        <img src={user.photos.small != null ? user.photos.small : no_ava}
+                        <img src={user.photos.small || no_ava}
                              alt={""}/>
                     </NavLink>
                     <div>

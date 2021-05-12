@@ -8,6 +8,8 @@ type ProfilePropsType = {
     profile: ProfileType | null
     profileStatus: string | null
     updateProfileStatus: (status: Object | null) => void
+    savePhotoProfile: (photo: File) => void
+    isOwner: boolean
 
 }
 
@@ -18,8 +20,10 @@ function Profile(props: ProfilePropsType) {
 
         <div className={classes.profCont}>
             <ProfileInfo
+                isOwner={props.isOwner}
                 profile={props.profile}
                 profileStatus={props.profileStatus}
+                savePhotoProfile={props.savePhotoProfile}
                 updateProfileStatus={props.updateProfileStatus}/>
             <ContainerPosts/>
 

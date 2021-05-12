@@ -1,19 +1,51 @@
 .user {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
     font-size: 30px;
-    padding-left: 15px;
+    padding-left: 100px;
+    align-items: center;
+    max-width:430px ;
+
 }
 
-.user .userAva {
+.user__name{
+
+}
+
+.user__photo{
     width: 50vh;
     border-radius: 50%;
     background-color: white;
+}
+
+.user__info{
+    font-size: 25px;
 }
 
 .input {
     font-size: 20px;
 }
 
-.status{
-    font-weight: 200;
+.statusBlock {
+    font-size: 35px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
+
+.statusBlock__changeStatus{
+
+}
+.statusBlock__changeStatus input{
+    width: 300px;
+    font-size: 30px;
+}
+.statusBlock__changeStatus button{
+    height: 40px;
+    width: 40px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.statusBlock__status{
+}
+
