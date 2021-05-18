@@ -1,3 +1,30 @@
+
+.loginBlock h1{
+    font-size: 40px;
+}
+.loginBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+.loginBlock input {
+    text-align: left;
+    border-radius: 1rem;
+    font-size: 20px;
+    padding: 5px;
+    margin-bottom: 5px;
+    outline: none;
+}
+
+.loginBlock button {
+    margin-top: 15px;
+    font-size: 30px;
+}
+
 .formControl {
 
 }

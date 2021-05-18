@@ -4,6 +4,8 @@ import {PostDataElType} from "../../../Redux/store";
 import classes from "./Posts.module.css"
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Textarea} from "../../../assets/FormControls/FormControl";
+import { useDispatch } from "react-redux";
+import {deletePostAC} from "../../../Redux/profileReducer";
 
 
 type PostTypeProps = {
@@ -15,7 +17,16 @@ type PostTypeProps = {
 
 function Posts(props: PostTypeProps) {
 
-    let postElement = props.postDataEl.map((p, index) => <NewPost idPost={p.idPost} post={p.post} likesCount={p.likesCount} key={index}/>);
+    let dispatch = useDispatch()
+
+
+    const deletePost = (id: string) => {
+        dispatch(deletePostAC(id))
+    }
+
+    let postElement = props.postDataEl.map((p, index) =>
+        <NewPost idPost={p.idPost} post={p.post} key={index} deletePost={deletePost}/>
+    );
 
     const addPost = (value: any) => {
         props.addPost(value.postText)
@@ -31,8 +42,13 @@ function Posts(props: PostTypeProps) {
 }
 
 
+
 const PostForm = reduxForm({form: "addPost"})((props: InjectedFormProps) => {
-    return <form onSubmit={props.handleSubmit}>
+    const onKeyPress = (key: string, event: any) => {
+        return key === 'Enter' && event()
+    }
+
+    return <form onSubmit={props.handleSubmit} onKeyPress={(e) => onKeyPress(e.key, props.handleSubmit)}>
         <div className={classes.textareaBlock}>
             <Field className={classes.textarea} component={Textarea} placeholder={"Write a post..."} name={"postText"}
                    />

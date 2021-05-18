@@ -3,7 +3,6 @@ import classes from "./Profile.module.css"
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {ContainerPosts} from "./Posts/containerPosts";
 import {ProfileType, UserElType} from "../../Redux/store";
-import {Preloader} from "../../assets/Preloader";
 
 type ProfilePropsType = {
     profile: ProfileType | null
@@ -27,9 +26,8 @@ function Profile(props: ProfilePropsType) {
     return <div className={classes.profCont}>
 
             <ProfileInfo {...props}/>
+            {props.profile && !props.currentUserId &&<ContainerPosts/>}
 
-
-        {props.profile && !props.currentUserId &&<ContainerPosts/>}
         </div>
 
 }

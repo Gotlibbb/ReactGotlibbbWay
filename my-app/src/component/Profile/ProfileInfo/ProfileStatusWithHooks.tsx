@@ -18,6 +18,7 @@ const ProfileStatusWithHooks = (props: ProfileStatusPropsType) => {
     useEffect(() => {
             setLsStatus(props.profileStatus)
         }, [props.profileStatus]
+
     )
 
 

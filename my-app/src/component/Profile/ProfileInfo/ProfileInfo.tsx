@@ -5,6 +5,7 @@ import {Preloader} from "../../../assets/Preloader";
 import {ProfileType, UserElType} from "../../../Redux/store";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import FollowToggle from "../../../assets/FollowToggle";
+import {useHistory} from 'react-router-dom';
 
 type ProfileInfoPropsType = {
     profile: ProfileType | null
@@ -22,6 +23,8 @@ type ProfileInfoPropsType = {
 
 
 function ProfileInfo(props: ProfileInfoPropsType) {
+
+    const history = useHistory()
 
     if (!props.profile) {
         return <Preloader/>
@@ -44,11 +47,12 @@ function ProfileInfo(props: ProfileInfoPropsType) {
                     ➕<input type="file" className={classes.inputAddPhoto}
                             onChange={(e: any) => sendPhoto(e.target.files[0])}/></label>
                 ||
-
-                <FollowToggle  getUnFollow={props.getUnFollow} getFollow={props.getFollow} user={currentUser} isFinished={props.isFinished}/>
-
+                <>
+                    <FollowToggle getUnFollow={props.getUnFollow} getFollow={props.getFollow} user={currentUser}
+                                  isFinished={props.isFinished}/>
+                    <button onClick={history.goBack}>↢ go back</button>
+                </>
                 }
-
             </div>
             <div>
                 <div className={classes.user__nameBlock}>
@@ -59,18 +63,17 @@ function ProfileInfo(props: ProfileInfoPropsType) {
                 </div>
 
 
+                <div className={classes.user__info}>
 
-            <div className={classes.user__info}>
-
-                <div><b>About me : </b>{props.profile.aboutMe || "information not found..."}</div>
-                <div><b>Open for interviews: </b>{props.profile.lookingForAJob ? "Yes" : "No"}</div>
-                <div><b>Github : </b>{props.profile.contacts.github || "information not found..."}</div>
-                <div><b>Twitter : </b>{props.profile.contacts.twitter || "information not found..."}</div>
-                <div><b>Instagram : </b>{props.profile.contacts.instagram || "information not found..."}</div>
-                <div><b>Facebook : </b>{props.profile.contacts.facebook || "information not found..."}</div>
-                <div><b>Vk : </b>{props.profile.contacts.vk || "information not found..."}</div>
-            </div>
+                    <div><b>About me : </b>{props.profile.aboutMe || "information not found..."}</div>
+                    <div><b>Open for interviews: </b>{props.profile.lookingForAJob ? "Yes" : "No"}</div>
+                    <div><b>Github : </b>{props.profile.contacts.github || "information not found..."}</div>
+                    <div><b>Twitter : </b>{props.profile.contacts.twitter || "information not found..."}</div>
+                    <div><b>Instagram : </b>{props.profile.contacts.instagram || "information not found..."}</div>
+                    <div><b>Facebook : </b>{props.profile.contacts.facebook || "information not found..."}</div>
+                    <div><b>Vk : </b>{props.profile.contacts.vk || "information not found..."}</div>
                 </div>
+            </div>
         </div>
     </div>
 }

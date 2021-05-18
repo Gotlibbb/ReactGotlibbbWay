@@ -1,4 +1,4 @@
-import {createAddPostAction, deletePost, setPhotoProfile, setProfileStatus, setUserProfile} from "./profileReducer";
+import {createAddPostAction, deletePostAC, setPhotoProfile, setProfileStatus, setUserProfile} from "./profileReducer";
 import {createAddMessageAction} from "./dialogsReducer";
 
 export type DialogsDataElType = {
@@ -14,7 +14,6 @@ export type MessagesDataElType = {
 export type PostDataElType = {
     idPost: string
     post: string
-    likesCount: number
 }
 
 export type UserElType = {
@@ -103,7 +102,7 @@ export type DispatchActionType =
     ReturnType<typeof createAddPostAction> |
     ReturnType<typeof createAddMessageAction> |
     ReturnType<typeof setUserProfile> |
-    ReturnType<typeof deletePost> |
+    ReturnType<typeof deletePostAC> |
     ReturnType<typeof setPhotoProfile> |
     ReturnType<typeof setProfileStatus>
 // ReturnType<typeof createChangeMessageHandlerAction>

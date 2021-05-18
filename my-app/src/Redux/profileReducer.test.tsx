@@ -1,4 +1,4 @@
-import {createAddPostAction, deletePost, profileReducer} from "./profileReducer";
+import {createAddPostAction, deletePostAC, profileReducer} from "./profileReducer";
 import {ProfilePageType} from "./store";
 
 let initialState: ProfilePageType = {
@@ -37,7 +37,7 @@ test('The first post text is `it`s the first post`', () => {
 
 test('delete post 1', () => {
 
-  let action = deletePost("1")
+  let action = deletePostAC("1")
 
   let newState = profileReducer(initialState, action)
 

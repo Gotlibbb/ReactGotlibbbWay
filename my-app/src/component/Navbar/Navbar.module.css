@@ -28,7 +28,7 @@
 
 .nav a:hover {
         color: #439585;
-
+        cursor: pointer;
 
 }
 

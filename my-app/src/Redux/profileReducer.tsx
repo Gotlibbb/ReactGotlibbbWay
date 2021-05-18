@@ -1,14 +1,16 @@
 import {DispatchActionType, PostDataElType, ProfilePageType, ProfileType,} from "./store";
 import {Dispatch} from "redux";
 import {profileAPI} from "../Api/api";
+import {v1} from "uuid";
 
 
 let initialState: ProfilePageType = {
     newPost: "",
     postData: [
-        {idPost: "1", post: "It`s my first post", likesCount: 5},
-        {idPost: "2", post: "I don`t have coronavirus", likesCount: 1},
-        {idPost: "3", post: "Hey, don`t go to the forbidden forest!!!", likesCount: 0},
+        {idPost: "1", post: "It`s my first post"},
+        {idPost: "2", post: "I don`t have coronavirus"},
+        {idPost: "3", post: "React it is a power🚀"},
+
     ],
     profile: null,
     profileStatus: "",
@@ -21,9 +23,8 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Di
     switch (action.type) {
         case "ADD-POST" : {
             let newPost: PostDataElType = {
-                idPost: "4",
+                idPost: v1(),
                 post: action.post,
-                likesCount: 0,
             };
             return {
                 ...state,
@@ -76,7 +77,7 @@ export const setProfileStatus = (profileStatus: string) => ({type: "SET_PROFILE_
 
 export const setPhotoProfile = (photoProfile: any) => ({type: "SET_PHOTO_PROFILE", photoProfile} as const);
 
-export const deletePost = (postId: string) => ({type: "DELETE_POST", postId} as const)
+export const deletePostAC = (postId: string) => ({type: "DELETE_POST", postId} as const)
 
 
 export const getProfile = (userId: string) => {

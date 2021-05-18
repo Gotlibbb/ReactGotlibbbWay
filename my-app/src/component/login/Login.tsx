@@ -12,8 +12,8 @@ import { compose } from "redux";
 const LogForm = reduxForm({form: 'login'})
 ((props: InjectedFormProps) => {
 
-    return <form onSubmit={props.handleSubmit}>
-
+    return <form onSubmit={props.handleSubmit} className={style.loginBlock}>
+            <h1>Welcome</h1>
         <div >
             <Field component={Input} placeholder={"Email"} name={"email"}/>
         </div>
@@ -23,10 +23,10 @@ const LogForm = reduxForm({form: 'login'})
                    type={"password"}/>
         </div>
 
-        <div>
-            <Field component={Input} type={"checkbox"} name={"remember me"}/>
-            Remember me
-        </div>
+        {/*<div style={{display: "flex", justifyContent: "center"}}>*/}
+        {/*    <Field  style={{fontSize: "25px"}} component={Input} type={"checkbox"} name={"remember me"}/>*/}
+        {/*    <span style={{fontSize: "25px"}}>Remember me</span>*/}
+        {/*</div>*/}
 
         <div>
             <button>Login</button>
@@ -54,7 +54,7 @@ const Login = (props: LoginPropsType) => {
     }
 
     return <div>
-        <h1>Welcome</h1>
+
         <LogForm onSubmit={onSubmit}/>
 
     </div>

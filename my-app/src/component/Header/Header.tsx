@@ -18,11 +18,11 @@ function Header(props: HeaderPropsType) {
         <span className={classes.name}>{props.login||"Please login"}</span>
         {props.auth &&
             <div className={classes.login}>
-                    <button onClick={() => {
+                   {props.auth && <button onClick={() => {
                         props.logout()
                         history.push('login')
                     }}>Log out
-                    </button>
+                    </button>}
 
             </div>
 
