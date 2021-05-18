@@ -2,34 +2,36 @@ import React from "react";
 import classes from "./Profile.module.css"
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {ContainerPosts} from "./Posts/containerPosts";
-import {ProfileType} from "../../Redux/store";
+import {ProfileType, UserElType} from "../../Redux/store";
+import {Preloader} from "../../assets/Preloader";
 
 type ProfilePropsType = {
     profile: ProfileType | null
     profileStatus: string | null
     updateProfileStatus: (status: Object | null) => void
     savePhotoProfile: (photo: File) => void
-    isOwner: boolean
+    currentUserId: number
+
+    usersPage: UserElType[]
+    isFinished: number[]
+    getUnFollow: (userId: number) => void
+    getFollow: (userId: number) => void
 
 }
 
 
 function Profile(props: ProfilePropsType) {
 
-    return <div className={classes.content}>
 
-        <div className={classes.profCont}>
-            <ProfileInfo
-                isOwner={props.isOwner}
-                profile={props.profile}
-                profileStatus={props.profileStatus}
-                savePhotoProfile={props.savePhotoProfile}
-                updateProfileStatus={props.updateProfileStatus}/>
-            <ContainerPosts/>
 
+    return <div className={classes.profCont}>
+
+            <ProfileInfo {...props}/>
+
+
+        {props.profile && !props.currentUserId &&<ContainerPosts/>}
         </div>
 
-    </div>
 }
 
 export default React.memo(Profile)

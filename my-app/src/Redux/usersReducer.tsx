@@ -6,7 +6,7 @@ import {updateObjectInArray} from "../utils/helper";
 
 let initialState = {
     items: [],
-    pageSize: 12,
+    pageSize: 8,
     totalCount: 0,
     currentPage: 1,
     isFetching: false,

@@ -1,11 +1,11 @@
 .nav {
 
-    margin-top: 25px;
-    height: 90vh;
+    padding-top: 15px;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-start;
+    justify-content:space-evenly ;
+    align-items: flex-start;
+    height: 15rem;
     font-size: 25px;
 }
 
@@ -15,26 +15,30 @@
 }
 
 .nav a {
-    color: white;
+    color: #65dfc9;
     text-decoration: none;
     margin: 10px;
 
 }
 
 .nav .activeHover {
-    color: greenyellow;
-    font-weight: bold;
+    color: #439585;
 
 }
 
 .nav a:hover {
-    color: greenyellow;
-    font-weight: bold;
+        color: #439585;
+
 
 }
 
 .nav a:active {
-    color: #ec1717;
-    font-weight: bold;
+    color: #2f6a5d;
+
+}
+
+.nav img {
+    width: 1.5rem;
+    padding-right: 10px;
 
 }

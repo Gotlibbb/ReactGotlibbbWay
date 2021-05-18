@@ -23,19 +23,24 @@ export function Users(props: UsersPropsType) {
 
     return <div className={styles.usersPage}>
 
-        <Pagination totalUsersCount={props.totalUsersCount}
-                    currentPage={props.currentPage}
-                    onPageChanged={props.onPageChanged}
-                    pageSize={props.pageSize}
-        />
-        {props.isFetching && <Preloader/>}
-        {!props.isFetching && <div className={styles.usersBlock}>
-            {props.usersPage.map(u => <User user={u}
-                                            getUnFollow={props.getUnFollow}
-                                            getFollow={props.getFollow}
-                                            isFinished={props.isFinished}/>
-            )}
-        </div>}
+        {props.isFetching ? <Preloader/> :
+            <>
+                <Pagination totalUsersCount={props.totalUsersCount}
+                            currentPage={props.currentPage}
+                            onPageChanged={props.onPageChanged}
+                            pageSize={props.pageSize}
+                />
+                <div className={styles.usersBlock}>
+                    {props.usersPage.map(u => <User user={u}
+                                                    getUnFollow={props.getUnFollow}
+                                                    getFollow={props.getFollow}
+                                                    isFinished={props.isFinished}/>
+                    )}
+                </div>
+            </>
+        }
+
+
     </div>
 }
 

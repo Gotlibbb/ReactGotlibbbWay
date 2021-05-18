@@ -6,7 +6,7 @@ import {setProfileStatus} from "../../../Redux/profileReducer";
 type ProfileStatusPropsType = {
     profileStatus: string | null
     updateProfileStatus: (status: Object | null) => void
-    isOwner: boolean
+    currentUserId: number
 }
 const ProfileStatusWithHooks = (props: ProfileStatusPropsType) => {
 
@@ -40,7 +40,7 @@ const ProfileStatusWithHooks = (props: ProfileStatusPropsType) => {
 
     return <div className={classes.statusBlock}>
 
-        {editMode && props.isOwner
+        {editMode && props.currentUserId
             ?
 
 
@@ -62,10 +62,9 @@ const ProfileStatusWithHooks = (props: ProfileStatusPropsType) => {
 
             :
 
-            <div className={classes.statusBlock__status}> <span
-                onDoubleClick={() => setEditMode(true)}>
+            <div className={classes.statusBlock__status} onDoubleClick={() => setEditMode(true)}> <span>
                  {lsStatus === null || lsStatus === "" ?
-                     <div><span><b>Status:</b> User has`t status.</span></div> : <b>Status: </b>}{lsStatus}</span>
+                     <div><span> User has`t status.</span></div> : lsStatus}</span>
             </div>
         }
     </div>

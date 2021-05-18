@@ -1,33 +1,69 @@
 ::-webkit-scrollbar {
-  width: 0;
+    width: 0;
 }
 
 .appContainer {
+    min-height: 100vh;
+    background: linear-gradient(to right top, #65dfc9, #46c6dc);
+    /*background: linear-gradient(to right top, #23443f, #13343e);*/
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.circle1,
+.circle2 {
+    background: white;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
+    height: 13rem;
+    width: 13rem;
+    border-radius: 50%;
+    z-index: 2;
+    position: absolute;
+}
+
+.circle1 {
+    top: 1%;
+    right: 10%;
+}
+
+.circle2 {
+    bottom: 2%;
+    left: 10%;
+}
+
+.appBlock {
+    display: flex;
+    background: white;
+    min-height: 80vh;
+    width: 70%;
+
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
+    border-radius: 2rem;
+    z-index: 3;
+    backdrop-filter: blur(0.5rem);
+
 
 }
 
-.contentBlock {
-    display: flex;
-    border: 1px solid;
-}
 
 .content {
-    width: 90%;
-    background-color: #cff1ef;
-    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 
 .navbar {
-    min-width: 110px;
-    width: 10%;
-    border: 1px solid;
-    background-color: #80592f;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
+    border-radius: 2rem;
+    width: 15rem;
+
+
 }
 
-.header {
-    width: 100%;
-    height: 100%;
-}
+/*.header {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*}*/

@@ -1,9 +1,12 @@
 import React from "react";
-import "./Navbar.module.css"
 import classes from "./Navbar.module.css";
-import {NavLink, useParams} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {StateType} from "../../Redux/store";
+import user from "../../images/user.svg"
+import users from "../../images/users.svg"
+import dialogs from "../../images/dialog.svg"
+
 
 
 export function Navbar() {
@@ -19,22 +22,22 @@ export function Navbar() {
 
             <div><NavLink activeClassName={authUserId === currentUserId ? classes.activeHover : ""}
                           className={classes.activeClick}
-                          to={"/profile"}>MyProfile</NavLink></div>
+                          to={"/profile"}><img src={user} alt="user"/>My profile</NavLink></div>
 
             <div><NavLink activeClassName={classes.activeHover} className={classes.activeClick}
-                          to={"/dialogs"}>Dialogs</NavLink></div>
+                          to={"/dialogs"}><img src={dialogs} alt="user"/>Dialogs</NavLink></div>
 
             <div><NavLink activeClassName={classes.activeHover} className={classes.activeClick}
-                          to={"/users"}>Users</NavLink></div>
+                          to={"/users"}><img src={users} alt="user"/>Users</NavLink></div>
 
-            <div><NavLink activeClassName={classes.activeHover} className={classes.activeClick}
-                          to={"/news"}>News</NavLink></div>
+            {/*<div><NavLink activeClassName={classes.activeHover} className={classes.activeClick}*/}
+            {/*              to={"/news"}>News</NavLink></div>*/}
 
-            <div><NavLink activeClassName={classes.activeHover} className={classes.activeClick}
-                          to={"/music"}>Music</NavLink></div>
+            {/*<div><NavLink activeClassName={  classes.activeHover} className={classes.activeClick}*/}
+            {/*              to={"/music"}>Music</NavLink></div>*/}
 
-            <div><NavLink activeClassName={classes.activeHover} className={classes.activeClick}
-                          to={"/settings"}>Settings</NavLink></div>
+            {/*<div><NavLink activeClassName={classes.activeHover} className={classes.activeClick}*/}
+            {/*              to={"/settings"}>Settings</NavLink></div>*/}
 
         </div>
     )

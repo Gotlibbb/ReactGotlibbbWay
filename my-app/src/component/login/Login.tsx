@@ -1,7 +1,6 @@
 import React from "react";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Input} from "../../assets/FormControls/FormControl";
-import {required} from "../../utils/validators/validators";
 import {connect} from "react-redux";
 import {login} from "../../Redux/authReducer";
 import {Redirect} from "react-router-dom";
@@ -16,11 +15,11 @@ const LogForm = reduxForm({form: 'login'})
     return <form onSubmit={props.handleSubmit}>
 
         <div >
-            <Field component={Input} validate={[required]} placeholder={"Email"} name={"email"}/>
+            <Field component={Input} placeholder={"Email"} name={"email"}/>
         </div>
 
         <div>
-            <Field component={Input} validate={[required]} placeholder={"Password"} name={"password"}
+            <Field component={Input}  placeholder={"Password"} name={"password"}
                    type={"password"}/>
         </div>
 

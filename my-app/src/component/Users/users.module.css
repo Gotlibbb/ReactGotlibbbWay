@@ -1,36 +1,14 @@
-.selectedPage {
-    font-weight: 1000;
-    cursor: pointer;
-
-    background-color: gray;
-    color: white;
-    border: 1px solid;
-
-
-}
-
-.selectedPage:active {
-
-
-    font-weight: 1000;
-    cursor: pointer;
-
-    background-color: #ec1717;
-    color: white;
-    border: 1px solid;
-
-}
 
 .pageS {
     display: flex;
     flex-direction: row;
     height: 30px;
     font-size: 20px;
-    color: white;
+
     font-weight: bold;
     justify-content: space-between;
     /*border-bottom: 2px solid #ff6f00;*/
-    background-color: dimgrey;
+    padding-top: 15px;
 }
 
 .page:hover {
@@ -66,9 +44,18 @@
     justify-content: flex-end;
 }
 
-.pageSwitch button{
-    font-size: 20px;
+button:hover {
+        background: rgba(255, 255, 255, 0.49);
+
+}
+
+button{
+    outline: none;
+    font-size: 1.3rem;
     font-weight: bold;
+    border-radius: 1rem;
+    color: #3f4c4c;
+    background: #FFFFFFCC;
 }
 
 
@@ -76,25 +63,30 @@
 
 .pageSwitch div {
     color:  black ;
-    background-color:  cyan ;
-    border-left:  2px solid black ;
-    border-right:  2px solid black ;
-    width:  38px ;
+    width:  30px ;
     text-align:  center ;
     margin-left:  5px ;
-    margin-right:  5px
+    margin-right:  5px;
+
+
 }
 
-.changePage button {
-    font-size: 20px;
+
+.changePage{
+    padding-left: 5px;
 }
 
+.changePage button{
+    margin-right: 10px;
+}
 .changePage input {
+    padding-left: 5px;
+    outline: none;
     font-size: 20px;
     font-weight: bold;
     width: 50px;
     text-decoration: none;
-    margin-right: 5px;
+    border-radius: 1rem;
 }
 
 
@@ -107,6 +99,7 @@
     display: flex;
     flex-direction: column;
 
+    height: 80vh;
 }
 
 
@@ -116,112 +109,61 @@
 
 .usersBlock {
 
-    max-height: 120vh;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
 
-    justify-content: inherit;
+    justify-content: center;
     align-items: center;
+
+    height: 100%;
 
 
 }
 
 a {
     text-decoration: none;
-    color: black;
-}
-
-.user button {
-    background-color: lightgreen;
-    font-size: 20px;
-    border-radius: 10%;
-
+    color: #3f4c4c;
 
 }
 
-.user button:active {
+
+.user button:hover {
+        background: rgba(255, 255, 255, 0.49);
+
+}
+
+ .user  button{
+    outline: none;
+    font-size: 1.3rem;
     font-weight: bold;
-    background-color: #7aec17;
-    font-size: 20px;
-    border-radius: 10%;
-
-
+    border-radius: 1rem;
+    color: #3f4c4c;
+    background: #FFFFFFCC;
 }
 
 .user img {
 
-    width: 155px;
+    width: 130px;
     background-color: white;
     border-radius: 50%;
 
 }
 
 .user {
-    opacity: 50%;
-    font-weight: bold;
     font-size: 25px;
     text-align: center;
     /*border: 1px dashed;*/
-    width: 300px;
-    height: 230px;
-
-    margin: 5px;
-}
-
-.user:hover {
-    opacity: 80%;
+    width: 200px;
+    height: 260px;
 
 }
 
-.user:active {
-    opacity: 100%;
-}
-
-.userFollow {
-    opacity: 100%;
-    font-weight: bold;
-    font-size: 25px;
-    text-align: center;
-    /*border: 1px dashed;*/
-    width: 150px;
-    margin: 5px;
-}
-
-.userFollow img:active {
-    background-color: #7aec17;
-}
-
-.userFollow:hover {
-    opacity: 100%;
-
-}
-
-.userFollow img {
-
-    width: 155px;
-    border-radius: 50%;
-    background-color: white;
 
 
-}
 
-.userFollow button {
-    background-color: lightcoral;
-    font-size: 20px;
-    border-radius: 10%;
-    opacity: 100%;
-
-
-}
-
-.userFollow button:active {
-    font-weight: bold;
-    background-color: red;
-    font-size: 20px;
-    border-radius: 10%;
-}
 
 button:hover {
     cursor: pointer;
+
 }
