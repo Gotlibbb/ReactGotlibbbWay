@@ -41,7 +41,7 @@ const ProfileStatusWithHooks = (props: ProfileStatusPropsType) => {
 
     return <div className={classes.statusBlock}>
 
-        {editMode && props.currentUserId
+        {editMode && !props.currentUserId
             ?
 
 
