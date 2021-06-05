@@ -4,9 +4,9 @@ import {ProfilePageType} from "./stateType";
 let initialState: ProfilePageType = {
   newPost: "",
   postData: [
-    {idPost: "1", post: "It`s my first post", likesCount: 5},
-    {idPost: "2", post: "I don`t have coronavirus", likesCount: 1},
-    {idPost: "3", post: "Hey, don`t go to the forbidden forest!!!", likesCount: 0},
+    {idPost: "1", post: "It`s my first post"},
+    {idPost: "2", post: "I don`t have coronavirus"},
+    {idPost: "3", post: "Hey, don`t go to the forbidden forest!!!"},
   ],
   profile: null,
   profileStatus: "",
