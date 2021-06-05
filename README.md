@@ -1,8 +1,7 @@
 # Социальная сеть.
 
-****
-### Проект выполнен в стиле GlassDesign.
 
+### Проект выполнен в стиле GlassDesign.
 ### Библиотеки : React, Redux, Redux-Thunk, Axios.
 
 ![image](https://user-images.githubusercontent.com/70148369/120896729-709a8400-c62b-11eb-80fa-a0fb61df68ac.png)
