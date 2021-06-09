@@ -54,6 +54,9 @@ export const profileAPI = {
     updateProfileStatus(status: Object) {
         return instance.put(`profile/status`, status).then(response => response.data)
     },
+    updateProfileInfo(info: ProfileType) {
+        return instance.put<ProfileType>(`profile`, info).then(response => response.data)
+    },
     putPhotoProfile(photoProfile: File) {
         const formData = new FormData()
         formData.append("image", photoProfile)

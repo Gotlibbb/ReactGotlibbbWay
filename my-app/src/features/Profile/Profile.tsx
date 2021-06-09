@@ -1,13 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import classes from "./profile.module.css"
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {PostsOntainer} from "./Posts/PostsСontainer";
+import {PostsContainer} from "./Posts/PostsСontainer";
 import {ProfileType, UserElType} from "../../store/stateType";
+import { ModalWindowInfo } from "./ProfileInfo/ModalWindowInfo";
 
 type ProfilePropsType = {
     profile: ProfileType | null
     profileStatus: string | null
     updateProfileStatus: (status: Object | null) => void
+    updateProfileInfo: (info: ProfileType | null) => void
     savePhotoProfile: (photo: File) => void
     currentUserId: number
 
@@ -19,14 +21,18 @@ type ProfilePropsType = {
 }
 
 
+
 function Profile(props: ProfilePropsType) {
+
+    let [showModal, setShowModal] = useState(false)
 
 
 
     return <div className={classes.profCont}>
 
-            <ProfileInfo {...props}/>
-            {props.profile && !props.currentUserId &&<PostsOntainer/>}
+            <ProfileInfo {...props} showModal={setShowModal}/>
+            {props.profile && !props.currentUserId &&<PostsContainer/>}
+            {showModal && <ModalWindowInfo profileInfo={props.profile} showModal={setShowModal}/>}
 
         </div>
 

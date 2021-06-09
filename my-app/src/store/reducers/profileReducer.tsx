@@ -75,6 +75,8 @@ export const setUserProfile = (profile: ProfileType | null) => ({type: "SET_USER
 
 export const setProfileStatus = (profileStatus: string) => ({type: "SET_PROFILE_STATUS", profileStatus} as const);
 
+export const updateProfileInfo = (info: ProfileType) => ({type: "SET_PROFILE_INFO", info} as const);
+
 export const setPhotoProfile = (photoProfile: any) => ({type: "SET_PHOTO_PROFILE", photoProfile} as const);
 
 export const deletePostAC = (postId: string) => ({type: "DELETE_POST", postId} as const)
@@ -103,6 +105,17 @@ export const updateProfileStatusTC = (status: Object) => {
         if (data.data.resultCode === 0) {
             dispatch(setProfileStatus(data));
         }
+    }
+}
+
+export const updateProfileInfoTC = (info: ProfileType) => {
+
+    return async (dispatch: Dispatch<DispatchActionType>) => {
+        let data = await profileAPI.updateProfileInfo(info)
+        console.log(data)
+        // if (data.data.resultCode === 0) {
+        //     dispatch(updateProfileInfo(data));
+        // }
     }
 }
 export const savePhotoProfile = (photoProfile: File) => {

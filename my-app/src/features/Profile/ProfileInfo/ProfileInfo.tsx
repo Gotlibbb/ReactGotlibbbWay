@@ -12,7 +12,9 @@ type ProfileInfoPropsType = {
     profileStatus: string | null
     currentUserId: number
     updateProfileStatus: (status: Object | null) => void
+    updateProfileInfo: (info: ProfileType ) => void
     savePhotoProfile: (photo: File) => void
+    showModal?: (show: boolean)=>void
 
     usersPage: UserElType[]
     isFinished: number[]
@@ -29,7 +31,7 @@ function ProfileInfo(props: ProfileInfoPropsType) {
     if (!props.profile) {
         return <Preloader/>
     }
-    let imgAny = props.profile.photos.large ? props.profile.photos.large : no_ava;
+    let imgAny = props.profile.photos && (props.profile.photos.large || no_ava);
 
     const sendPhoto = (e: File) => {
         props.savePhotoProfile(e)
@@ -64,15 +66,16 @@ function ProfileInfo(props: ProfileInfoPropsType) {
 
 
                 <div className={classes.user__info}>
-
                     <div><b>About me : </b>{props.profile.aboutMe || "information not found..."}</div>
                     <div><b>Open for interviews: </b>{props.profile.lookingForAJob ? "Yes" : "No"}</div>
-                    <div><b>Github : </b>{props.profile.contacts.github || "information not found..."}</div>
-                    <div><b>Twitter : </b>{props.profile.contacts.twitter || "information not found..."}</div>
-                    <div><b>Instagram : </b>{props.profile.contacts.instagram || "information not found..."}</div>
-                    <div><b>Facebook : </b>{props.profile.contacts.facebook || "information not found..."}</div>
-                    <div><b>Vk : </b>{props.profile.contacts.vk || "information not found..."}</div>
+                    <div><b>Github : </b>{props.profile.contacts && (props.profile.contacts.github || "information not found...")}</div>
+                    <div><b>Twitter : </b>{props.profile.contacts && (props.profile.contacts.twitter || "information not found...")}</div>
+                    <div><b>Instagram : </b>{props.profile.contacts && (props.profile.contacts.instagram || "information not found...")}</div>
+                    <div><b>Facebook : </b>{props.profile.contacts && (props.profile.contacts.facebook || "information not found...")}</div>
+                    <div><b>Vk : </b>{props.profile.contacts && (props.profile.contacts.vk || "information not found...")}</div>
+
                 </div>
+                 <button onClick={()=>props.showModal && props.showModal(true)}>Change info</button>
             </div>
         </div>
     </div>

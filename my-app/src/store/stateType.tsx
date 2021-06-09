@@ -28,22 +28,22 @@ export type UserElType = {
 }
 
 export type ProfileType = {
-    "aboutMe": string,
-    "contacts": {
-        "facebook": string,
-        "website": string | null,
-        "vk": string,
-        "twitter": string,
-        "instagram": string,
-        "youtube": string | null,
-        "github": string,
-        "mainLink": string | null
+    "aboutMe"?: string,
+    "contacts"?: {
+        "facebook"?: string,
+        "website"?: string | null,
+        "vk"?: string,
+        "twitter"?: string,
+        "instagram"?: string,
+        "youtube"?: string | null,
+        "github"?: string,
+        "mainLink"?: string | null
     },
-    "lookingForAJob": boolean,
-    "lookingForAJobDescription": string,
-    "fullName": string| null,
-    "userId": number| null,
-    "photos": {
+    "lookingForAJob"?: boolean,
+    "lookingForAJobDescription"?: string,
+    "fullName"?: string| null,
+    "userId"?: number| null,
+    "photos"?: {
         "small": string,
         "large": string
     }

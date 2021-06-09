@@ -28,4 +28,4 @@ function mapDispatchProps(dispatch: (action: DispatchActionType) => void) {
 }
 
 
-export const PostsOntainer = compose<Function>(connect(mapStateProps, mapDispatchProps),React.memo)(Posts);
+export const PostsContainer = compose<Function>(connect(mapStateProps, mapDispatchProps),React.memo)(Posts);

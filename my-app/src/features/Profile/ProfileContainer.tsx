@@ -6,7 +6,7 @@ import {
     getProfile,
     getProfileStatus,
     savePhotoProfile,
-    setUserProfile,
+    setUserProfile, updateProfileInfoTC,
     updateProfileStatusTC
 } from "../../store/reducers/profileReducer";
 import {RouteComponentProps, withRouter} from "react-router-dom";
@@ -21,6 +21,7 @@ type ProfilePropsType = RouteComponentProps<{ userId: string }> & {
     getProfile: (userId: string) => void
     getProfileStatus: (userId: string) => void
     updateProfileStatus: (status: Object | null) => void
+    updateProfileInfo: (info: ProfileType | null) => void
     isAuth: boolean
     profileStatus: string
     authId: string
@@ -87,6 +88,7 @@ export default compose<Function>(connect(mapStateToProps, {
         getProfile,
         getProfileStatus,
         updateProfileStatus: updateProfileStatusTC,
+        updateProfileInfo: updateProfileInfoTC,
         getUnFollow,
         getFollow,
     }),
