@@ -105,14 +105,19 @@ type ModalWindowInfoPropsType = {
 
 export function ModalWindowInfo(props: ModalWindowInfoPropsType) {
 
-    let [name, setName] = useState(props.profileInfo && props.profileInfo.fullName || "")
-    let [github, setGithub] = useState(props.profileInfo && props.profileInfo.contacts?.github || "")
-    let [twitter, setTwitter] = useState(props.profileInfo && props.profileInfo.contacts?.twitter || "")
-    let [instagram, setInstagram] = useState(props.profileInfo && props.profileInfo.contacts?.instagram || "")
-    let [facebook, setFacebook] = useState(props.profileInfo && props.profileInfo.contacts?.facebook || "")
-    let [vk, setVk] = useState(props.profileInfo && props.profileInfo.contacts?.vk || "")
-    let [aboutMe, setAboutMe] = useState(props.profileInfo && props.profileInfo.aboutMe || "")
-    let [openForJob, setOpenForJob] = useState<boolean>(props.profileInfo && props.profileInfo.lookingForAJob || false)
+    const getInit = (val: string ): string  => props.profileInfo ? props.profileInfo[val] :  "" ;
+    const getInitOpenForJob = (val: string ): boolean  => props.profileInfo ? props.profileInfo[val] :  false;
+    const getInitContacts = (val: string ): string  => (props.profileInfo && props.profileInfo.contacts) ? props.profileInfo.contacts[val] :  "";
+
+
+    let [name, setName] = useState(getInit("fullName") )
+    let [github, setGithub] = useState(getInitContacts("github"))
+    let [twitter, setTwitter] = useState(getInitContacts("twitter"))
+    let [instagram, setInstagram] = useState(getInitContacts("instagram"))
+    let [facebook, setFacebook] = useState(getInitContacts("facebook"))
+    let [vk, setVk] = useState(getInitContacts("vk"))
+    let [aboutMe, setAboutMe] = useState(getInit("aboutMe"))
+    let [openForJob, setOpenForJob] = useState<boolean>(getInitOpenForJob("lookingForAJob"))
 
 
     return (

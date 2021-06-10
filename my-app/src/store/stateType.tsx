@@ -1,4 +1,10 @@
-import {createAddPostAction, deletePostAC, setPhotoProfile, setProfileStatus, setUserProfile} from "./reducers/profileReducer";
+import {
+    createAddPostAction,
+    deletePostAC,
+    setPhotoProfile,
+    setProfileStatus,
+    setUserProfile
+} from "./reducers/profileReducer";
 import {createAddMessageAction} from "./reducers/dialogsReducer";
 
 export type DialogsDataElType = {
@@ -27,22 +33,28 @@ export type UserElType = {
 
 }
 
-export type ProfileType = {
+interface KeysObj {
+    [key: string]: any;
+}
+
+interface ContactsType extends KeysObj{
+    "facebook"?: string,
+    "website"?: string | null,
+    "vk"?: string,
+    "twitter"?: string,
+    "instagram"?: string,
+    "youtube"?: string | null,
+    "github"?: string,
+    "mainLink"?: string | null
+}
+
+export interface ProfileType extends KeysObj {
     "aboutMe"?: string,
-    "contacts"?: {
-        "facebook"?: string,
-        "website"?: string | null,
-        "vk"?: string,
-        "twitter"?: string,
-        "instagram"?: string,
-        "youtube"?: string | null,
-        "github"?: string,
-        "mainLink"?: string | null
-    },
+    "contacts"?: ContactsType,
     "lookingForAJob"?: boolean,
     "lookingForAJobDescription"?: string,
-    "fullName"?: string| null,
-    "userId"?: number| null,
+    "fullName"?: string | null,
+    "userId"?: number | null,
     "photos"?: {
         "small": string,
         "large": string
