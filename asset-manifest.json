@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ReactGotlibbbWay/static/css/main.d6fbb9b7.chunk.css",
-    "main.js": "/ReactGotlibbbWay/static/js/main.0338f5da.chunk.js",
-    "main.js.map": "/ReactGotlibbbWay/static/js/main.0338f5da.chunk.js.map",
+    "main.js": "/ReactGotlibbbWay/static/js/main.e1daff02.chunk.js",
+    "main.js.map": "/ReactGotlibbbWay/static/js/main.e1daff02.chunk.js.map",
     "runtime-main.js": "/ReactGotlibbbWay/static/js/runtime-main.de0ff6a7.js",
     "runtime-main.js.map": "/ReactGotlibbbWay/static/js/runtime-main.de0ff6a7.js.map",
     "static/js/2.3cba358b.chunk.js": "/ReactGotlibbbWay/static/js/2.3cba358b.chunk.js",
     "static/js/2.3cba358b.chunk.js.map": "/ReactGotlibbbWay/static/js/2.3cba358b.chunk.js.map",
     "index.html": "/ReactGotlibbbWay/index.html",
-    "precache-manifest.f39b3002f086c9b2f922a430b4df837d.js": "/ReactGotlibbbWay/precache-manifest.f39b3002f086c9b2f922a430b4df837d.js",
+    "precache-manifest.cf0b7ce037adb844e21c5b19b1bf7afb.js": "/ReactGotlibbbWay/precache-manifest.cf0b7ce037adb844e21c5b19b1bf7afb.js",
     "service-worker.js": "/ReactGotlibbbWay/service-worker.js",
     "static/css/main.d6fbb9b7.chunk.css.map": "/ReactGotlibbbWay/static/css/main.d6fbb9b7.chunk.css.map",
     "static/js/2.3cba358b.chunk.js.LICENSE.txt": "/ReactGotlibbbWay/static/js/2.3cba358b.chunk.js.LICENSE.txt",
@@ -24,6 +24,6 @@
     "static/js/runtime-main.de0ff6a7.js",
     "static/js/2.3cba358b.chunk.js",
     "static/css/main.d6fbb9b7.chunk.css",
-    "static/js/main.0338f5da.chunk.js"
+    "static/js/main.e1daff02.chunk.js"
   ]
 }
