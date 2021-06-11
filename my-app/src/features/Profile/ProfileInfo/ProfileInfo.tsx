@@ -12,9 +12,9 @@ type ProfileInfoPropsType = {
     profileStatus: string | null
     currentUserId: number
     updateProfileStatus: (status: Object | null) => void
-    updateProfileInfo: (info: ProfileType ) => void
+    updateProfileInfo: (info: ProfileType) => void
     savePhotoProfile: (photo: File) => void
-    showModal?: (show: boolean)=>void
+    showModal?: (show: boolean) => void
 
     usersPage: UserElType[]
     isFinished: number[]
@@ -38,6 +38,16 @@ function ProfileInfo(props: ProfileInfoPropsType) {
     }
 
     const currentUser = props.usersPage.find(user => user.id === props.currentUserId);
+
+    const chekInfoContacts = (val: string) => {
+        if (props.profile && props.profile.contacts && (props.profile.contacts[val].length > 0)) {
+            return <a href={props.profile.contacts[val]}>{props.profile.contacts[val]}</a>
+        } else {
+            return "information not found..."
+        }
+
+    }
+
 
     return <div>
 
@@ -66,16 +76,19 @@ function ProfileInfo(props: ProfileInfoPropsType) {
 
 
                 <div className={classes.user__info}>
-                    <div><b>About me : </b>{props.profile.aboutMe || "information not found..."}</div>
                     <div><b>Open for interviews: </b>{props.profile.lookingForAJob ? "Yes" : "No"}</div>
-                    <div><b>Github : </b>{props.profile.contacts && (props.profile.contacts.github || "information not found...")}</div>
-                    <div><b>Twitter : </b>{props.profile.contacts && (props.profile.contacts.twitter || "information not found...")}</div>
-                    <div><b>Instagram : </b>{props.profile.contacts && (props.profile.contacts.instagram || "information not found...")}</div>
-                    <div><b>Facebook : </b>{props.profile.contacts && (props.profile.contacts.facebook || "information not found...")}</div>
-                    <div><b>Vk : </b>{props.profile.contacts && (props.profile.contacts.vk || "information not found...")}</div>
+                    <div><b>Github : </b>{chekInfoContacts("github")}</div>
+                    <div><b>Twitter : </b>{chekInfoContacts("twitter")}</div>
+                    <div><b>Instagram : </b>{chekInfoContacts("instagram")}</div>
+                    <div><b>Facebook : </b>{chekInfoContacts("facebook")}</div>
+                    <div><b>Vk : </b>{chekInfoContacts("vk")}</div>
+                    <div><b>About me : </b>{props.profile.aboutMe || "information not found..."}</div>
+                    <div><b>Job description
+                        : </b>{props.profile.lookingForAJobDescription || "information not found..."}</div>
 
                 </div>
-                 <button onClick={()=>props.showModal && props.showModal(true)}>Change info</button>
+                {!props.currentUserId &&
+                <button onClick={() => props.showModal && props.showModal(true)}>Change info</button>}
             </div>
         </div>
     </div>

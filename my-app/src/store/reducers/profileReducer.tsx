@@ -75,7 +75,7 @@ export const setUserProfile = (profile: ProfileType | null) => ({type: "SET_USER
 
 export const setProfileStatus = (profileStatus: string) => ({type: "SET_PROFILE_STATUS", profileStatus} as const);
 
-export const updateProfileInfo = (info: ProfileType) => ({type: "SET_PROFILE_INFO", info} as const);
+// export const updateProfileInfo = (info: ProfileType) => ({type: "SET_PROFILE_INFO", info} as const);
 
 export const setPhotoProfile = (photoProfile: any) => ({type: "SET_PHOTO_PROFILE", photoProfile} as const);
 
@@ -110,12 +110,14 @@ export const updateProfileStatusTC = (status: Object) => {
 
 export const updateProfileInfoTC = (info: ProfileType) => {
 
-    return async (dispatch: Dispatch<DispatchActionType>) => {
+    return async (dispatch: Dispatch<any>, getState: Function) => {
+
+        let userId = getState().data.id
         let data = await profileAPI.updateProfileInfo(info)
         console.log(data)
-        // if (data.data.resultCode === 0) {
-        //     dispatch(updateProfileInfo(data));
-        // }
+        if (data.resultCode === 0) {
+            dispatch(getProfile(userId));
+        }
     }
 }
 export const savePhotoProfile = (photoProfile: File) => {

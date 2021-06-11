@@ -52,6 +52,9 @@
     width: 0;
 }
 
+.user__info a:hover {
+    color: tomato;
+}
 .user__info{
     padding-top: 15px;
     padding-left: 15px;

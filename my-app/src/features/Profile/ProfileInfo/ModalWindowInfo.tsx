@@ -100,56 +100,96 @@ let ButtonBlock = styled.div`
 type ModalWindowInfoPropsType = {
     showModal: (show: boolean) => void
     profileInfo: ProfileType | null
+    updateProfileInfo: (info: ProfileType | null) => void
+
+
 }
 
 
 export function ModalWindowInfo(props: ModalWindowInfoPropsType) {
 
-    const getInit = (val: string ): string  => props.profileInfo ? props.profileInfo[val] :  "" ;
-    const getInitOpenForJob = (val: string ): boolean  => props.profileInfo ? props.profileInfo[val] :  false;
-    const getInitContacts = (val: string ): string  => (props.profileInfo && props.profileInfo.contacts) ? props.profileInfo.contacts[val] :  "";
+    const getInit = (val: string): string => props.profileInfo ? props.profileInfo[val] : "";
+    const getInitOpenForJob = (val: string): boolean => props.profileInfo ? props.profileInfo[val] : false;
+    const getInitContacts = (val: string): string => (props.profileInfo && props.profileInfo.contacts) ? props.profileInfo.contacts[val] : "";
 
 
-    let [name, setName] = useState(getInit("fullName") )
-    let [github, setGithub] = useState(getInitContacts("github"))
-    let [twitter, setTwitter] = useState(getInitContacts("twitter"))
-    let [instagram, setInstagram] = useState(getInitContacts("instagram"))
-    let [facebook, setFacebook] = useState(getInitContacts("facebook"))
-    let [vk, setVk] = useState(getInitContacts("vk"))
-    let [aboutMe, setAboutMe] = useState(getInit("aboutMe"))
+    let [name, setName] = useState(getInit("fullName") || "")
+    let [github, setGithub] = useState(getInitContacts("github") || "")
+    let [twitter, setTwitter] = useState(getInitContacts("twitter") || "")
+    let [instagram, setInstagram] = useState(getInitContacts("instagram") || "")
+    let [facebook, setFacebook] = useState(getInitContacts("facebook") || "")
+    let [vk, setVk] = useState(getInitContacts("vk") || "")
+    let [aboutMe, setAboutMe] = useState(getInit("aboutMe") || "")
+    let [jobDescription, setJobDescription] = useState(getInit("lookingForAJobDescription") || "")
     let [openForJob, setOpenForJob] = useState<boolean>(getInitOpenForJob("lookingForAJob"))
+
+    const ApplyChangesHandler = () => {
+        props.updateProfileInfo({
+            "contacts": {
+                mainLink: null,
+                website: null,
+                youtube: null,
+                vk,
+                github,
+                facebook,
+                instagram,
+                twitter,
+            },
+            fullName : name,
+            aboutMe,
+            lookingForAJob: openForJob,
+            lookingForAJobDescription: jobDescription,
+        })
+        props.showModal(false)
+    }
 
 
     return (
         <ModalContainer>
             <ModalWindowBlock>
                 <InputBlock>
-                    <label> <input type="text" placeholder={"name"} value={name} onChange={(e)=>setName(e.currentTarget.value)}/> <span>- Name</span></label>
+                    <label> <input type="text" placeholder={"name"} value={name}
+                                   onChange={(e) => setName(e.currentTarget.value)}/> <span>- Name</span></label>
                 </InputBlock>
                 <InputBlock>
-                    <label> <input type="text" placeholder={"github"} value={github} onChange={(e)=>setGithub(e.currentTarget.value)}/> <span>- Github</span></label>
+                    <label> <input type="text" placeholder={"github"} value={github}
+                                   onChange={(e) => setGithub(e.currentTarget.value)}/> <span>- Github</span></label>
                 </InputBlock>
                 <InputBlock>
-                    <label> <input type="text" placeholder={"twitter"} value={twitter} onChange={(e)=>setTwitter(e.currentTarget.value)}/> <span>- Twitter</span></label>
+                    <label> <input type="text" placeholder={"twitter"} value={twitter}
+                                   onChange={(e) => setTwitter(e.currentTarget.value)}/> <span>- Twitter</span></label>
                 </InputBlock>
                 <InputBlock>
-                    <label> <input type="text" placeholder={"instagram"} value={instagram} onChange={(e)=>setInstagram(e.currentTarget.value)}/> <span>- Instagram</span></label>
+                    <label> <input type="text" placeholder={"instagram"} value={instagram}
+                                   onChange={(e) => setInstagram(e.currentTarget.value)}/>
+                        <span>- Instagram</span></label>
                 </InputBlock>
                 <InputBlock>
-                    <label> <input type="text" placeholder={"facebook"} value={facebook} onChange={(e)=>setFacebook(e.currentTarget.value)}/> <span>- Facebook</span></label>
+                    <label> <input type="text" placeholder={"facebook"} value={facebook}
+                                   onChange={(e) => setFacebook(e.currentTarget.value)}/>
+                        <span>- Facebook</span></label>
                 </InputBlock>
                 <InputBlock>
-                    <label> <input type="text" placeholder={"vk"} value={vk} onChange={(e)=>setVk(e.currentTarget.value)}/> <span>- VK</span></label>
+                    <label> <input type="text" placeholder={"vk"} value={vk}
+                                   onChange={(e) => setVk(e.currentTarget.value)}/> <span>- VK</span></label>
                 </InputBlock>
                 <InputBlock>
-                    <label> <textarea placeholder={"about me"} value={aboutMe} onChange={(e)=>setAboutMe(e.currentTarget.value)}/> <span>- About me </span></label>
+                    <label> <textarea placeholder={"about me"} value={aboutMe}
+                                      onChange={(e) => setAboutMe(e.currentTarget.value)}/>
+                        <span>- About me </span></label>
                 </InputBlock>
                 <InputBlock>
-                    <label> <input type="checkbox" checked={openForJob} onChange={(e)=>setOpenForJob(e.currentTarget.checked)}/> <span>- Open for interviews</span></label>
+                    <label> <input type="text" placeholder={"job description"} value={jobDescription}
+                                      onChange={(e) => setJobDescription(e.currentTarget.value)}/>
+                        <span>- Description </span></label>
+                </InputBlock>
+                <InputBlock>
+                    <label> <input type="checkbox" checked={openForJob}
+                                   onChange={(e) => setOpenForJob(e.currentTarget.checked)}/> <span>- Open for interviews</span></label>
                 </InputBlock>
                 <ButtonBlock>
                     <button onClick={() => props.showModal(false)}>Cancel</button>
-                    <button>Apply changes</button>
+                    <button onClick={ApplyChangesHandler}>Apply changes</button>
                 </ButtonBlock>
             </ModalWindowBlock>
         </ModalContainer>

@@ -28,11 +28,12 @@ function Profile(props: ProfilePropsType) {
 
 
 
+
     return <div className={classes.profCont}>
 
             <ProfileInfo {...props} showModal={setShowModal}/>
             {props.profile && !props.currentUserId &&<PostsContainer/>}
-            {showModal && <ModalWindowInfo profileInfo={props.profile} showModal={setShowModal}/>}
+            {!props.currentUserId && showModal && <ModalWindowInfo updateProfileInfo={props.updateProfileInfo} profileInfo={props.profile} showModal={setShowModal}/>}
 
         </div>
 

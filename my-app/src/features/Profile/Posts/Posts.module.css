@@ -56,9 +56,14 @@
 }
 
 
+.postsBlock button {
+    font-size: 15px;
+    height: 25px;
+    width: 25px;
+
+}
 .postsBlock {
     padding-bottom: 15px;
-    /*border: 1px solid;*/
-    /*background-color: #c8c8c8;*/
+
 }
 
