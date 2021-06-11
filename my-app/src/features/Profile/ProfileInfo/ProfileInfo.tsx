@@ -40,9 +40,9 @@ function ProfileInfo(props: ProfileInfoPropsType) {
     const currentUser = props.usersPage.find(user => user.id === props.currentUserId);
 
     const chekInfoContacts = (val: string) => {
-        if (props.profile && props.profile.contacts && (props.profile.contacts[val].length > 0)) {
+        if (props.profile && props.profile.contacts ) {
             return <a href={props.profile.contacts[val]}>{props.profile.contacts[val]}</a>
-        } else {
+        } else  {
             return "information not found..."
         }
 
