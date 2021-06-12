@@ -20,7 +20,7 @@ function Header(props: HeaderPropsType) {
             <div className={classes.login}>
                    {props.auth && <button onClick={() => {
                         props.logout()
-                        history.push('login')
+                        history.push('/ReactGotlibbbWay/login')
                     }}>Log out
                     </button>}
 

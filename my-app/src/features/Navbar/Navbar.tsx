@@ -25,19 +25,19 @@ export function Navbar() {
 
             <div><NavLink activeClassName={authUserId === currentUserId ? classes.activeHover : ""}
                           className={classes.activeClick}
-                          to={"/profile"}><img src={user} alt="user"/>My profile</NavLink></div>
+                          to={"/ReactGotlibbbWay/profile"}><img src={user} alt="user"/>My profile</NavLink></div>
 
             <div><NavLink activeClassName={classes.activeHover} className={classes.activeClick}
-                          to={"/dialogs"}><img src={dialogs} alt="user"/>Dialogs</NavLink></div>
+                          to={"/ReactGotlibbbWay/dialogs"}><img src={dialogs} alt="user"/>Dialogs</NavLink></div>
 
             <div><NavLink activeClassName={classes.activeHover} className={classes.activeClick}
-                          to={"/users"}><img src={users} alt="user"/>Users</NavLink></div>
+                          to={"/ReactGotlibbbWay/users"}><img src={users} alt="user"/>Users</NavLink></div>
 
              {auth && <a
                         style={{justifySelf: "end"}}
                         onClick={() => {
                         dispatch(logout())
-                        history.push('login')
+                        history.push('/ReactGotlibbbWay/login')
                     }}><img style={{paddingLeft: "5px"}} src={logoutsvg} alt="logout"/>Log out
                     </a>}
 

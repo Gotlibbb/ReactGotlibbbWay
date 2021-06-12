@@ -10,14 +10,14 @@ import React from "react";
 
 const RoutesToContent = () => {
     return <>
-        <Route path='/profile/:userId?'
+        <Route path='/ReactGotlibbbWay/profile/:userId?'
                us
                render={() => <ProfileContainer/>}/>
-        <Route path='/login'
+        <Route path='/ReactGotlibbbWay/login'
                render={() => <Login/>}/>
-        <Route path='/dialogs'
+        <Route path='/ReactGotlibbbWay/dialogs'
                render={() => <DialogsContainer/>}/>
-        <Route path='/users'
+        <Route path='/ReactGotlibbbWay/users'
                render={() => <UsersContainer/>}/>
         {/*<Route path='/news'*/}
         {/*       render={() => <News/>}/>*/}

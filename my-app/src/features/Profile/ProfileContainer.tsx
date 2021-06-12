@@ -42,7 +42,7 @@ class ProfileContainer extends React.Component<ProfilePropsType, ProfileType> {
         let userId = this.props.match.params.userId
         if (!userId) {
             userId = this.props.authId
-            if (!userId) this.props.history.push("/Login")
+            if (!userId) this.props.history.push("/ReactGotlibbbWay/login")
 
 
         }

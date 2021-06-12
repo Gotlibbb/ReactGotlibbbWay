@@ -45,7 +45,7 @@ type LoginPropsType = {
 
 const Login = (props: LoginPropsType) => {
 
-    if (props.isAuth) return <Redirect to={'/profile'}/>
+    if (props.isAuth) return <Redirect to={'/ReactGotlibbbWay/profile'}/>
 
 
     const onSubmit = (formData: any) => {
