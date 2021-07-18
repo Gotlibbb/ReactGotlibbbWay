@@ -20,7 +20,7 @@ export function User({user, ...props}: UserPropsType) {
 
     return <div key={user.id} className={styles.user}>
 
-        <NavLink to={'/profile/' + user.id}>
+        <NavLink to={'/ReactGotlibbbWay/profile/' + user.id}>
             <div>{user.name}</div>
 
             <img src={user.photos.small || no_ava}

@@ -14,6 +14,8 @@ const LogForm = reduxForm({form: 'login'})
 
     return <form onSubmit={props.handleSubmit} className={style.loginBlock}>
             <h1>Welcome</h1>
+        <p>For test purpose login: free@samuraijs.com
+and password: free</p>
         <div >
             <Field component={Input} placeholder={"Email"} name={"email"}/>
         </div>
